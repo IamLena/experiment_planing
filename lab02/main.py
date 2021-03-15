@@ -121,12 +121,20 @@ def getStat(model, times):
 
 	return (waiting_time_arr)
 
-def pfe(m1_min, m1_max, m2_min, m2_max, sigma2_min, sigma2_max):
-	table = PrettyTable()
-	times = 5
+def printtable(table, times):
+	pt = PrettyTable()
 	column_name = "y_avg out of " + str(times)
-	table.field_names = ["#", "x1", "x2", "x3", column_name, "y_dispersion"]
+	pt.field_names = ["#", "x1", "x2", "x3", column_name, "y_dispersion"]
+	for i in table:
+		pt.add_row(i)
+	print(pt)
+
+def pfe(m1_min, m1_max, m2_min, m2_max, sigma2_min, sigma2_max, times):
+	table = []
+	sumdisppersion = 0
+	maxdispersion = 0
 	for i in range (8):
+		tablerow = []
 		if (i & 0b00000001 == 0b00000001):
 			sigma2 = sigma2_max
 		else:
@@ -144,8 +152,52 @@ def pfe(m1_min, m1_max, m2_min, m2_max, sigma2_min, sigma2_max):
 		length = len(y_array)
 		y_avg = sum(y_array) / length
 		y_dispersion = sum([(y_avg - i)**2 / length for i in y_array])
-		table.add_row([i+1, m1, m2, sigma2, y_avg, y_dispersion])
-	print(table)
+		if (y_dispersion > maxdispersion):
+			maxdispersion = y_dispersion
+		sumdisppersion += y_dispersion
+		tablerow.append(i+1)
+		tablerow.append(m1)
+		tablerow.append(m2)
+		tablerow.append(sigma2)
+		tablerow.append(y_avg)
+		tablerow.append(y_dispersion)
+		table.append(tablerow)
+	printtable(table, times)
+	Gp = maxdispersion/sumdisppersion
+	S = sumdisppersion / 8
+	print("Критерий Кохрена: ", Gp)
+	print("дисперсии воспроизводимости ", S)
+	assert(Gp < 0.3910)
+	koefs = calculate_koefs(table)
+	y_hat = calculate(koefs)
+	print(y_hat)
+
+def calculate(koefs):
+	table = []
+	for i in range (8):
+		tablerow = []
+		if (i & 0b00000001 == 0b00000001):
+			sigma2 = 1
+		else:
+			sigma2 = -1
+		if (i & 0b00000010 == 0b00000010):
+			m2 = 1
+		else:
+			m2 = -1
+		if (i & 0b00000100 == 0b00000100):
+			m1 = 1
+		else:
+			m1 = -1
+		tablerow.append(m1)
+		tablerow.append(m2)
+		tablerow.append(sigma2)
+		table.append(tablerow)
+	y_hat = []
+	N = len(table)
+	for i in range (N):
+		y_hat_value = koefs[0] + koefs[1]*table[i][0] + koefs[2]*table[i][1] + koefs[3]*table[i][2] + koefs[4]*table[i][0]*table[i][1] + koefs[5]*table[i][0]*table[i][2] + koefs[6]*table[i][1]*table[i][2]
+		y_hat.append(y_hat_value)
+	return y_hat
 
 def init_model(m1, m2, sigma2, start_time, end_time):
 	generators_conf_array = []
@@ -165,6 +217,57 @@ def init_model(m1, m2, sigma2, start_time, end_time):
 	model = System(start_time, end_time, generators_conf_array, operators_conf_array)
 	return model
 
+def calculate_koefs(table):
+	ones = []
+	for i in range (8):
+		onesrow = []
+		if (i & 0b00000001 == 0b00000001):
+			sigma2 = 1
+		else:
+			sigma2 = -1
+		if (i & 0b00000010 == 0b00000010):
+			m2 = 1
+		else:
+			m2 = -1
+		if (i & 0b00000100 == 0b00000100):
+			m1 = 1
+		else:
+			m1 = -1
+		onesrow.append(m1)
+		onesrow.append(m2)
+		onesrow.append(sigma2)
+		ones.append(onesrow)
+
+	koefs = []
+	N = len(table)
+	a_0 = 0
+	for row in table:
+		a_0 += row[4]
+	a_0 /= N
+	koefs.append(a_0)
+	for i in range(3):
+		ai_value = 0
+		for n in range (N):
+			ai_value += ones[n][i] * table[n][4]
+		ai_value /= N
+		koefs.append(ai_value)
+	for i in range(3 - 1):
+		for j in range(i + 1, 3):
+			aij_value = 0
+			for n in range (N):
+				aij_value += ones[n][i] * ones[n][j] * table[n][4]
+			aij_value /= N
+			koefs.append(aij_value)
+
+	print("a0: ", koefs[0])
+	print("a1: ", koefs[1])
+	print("a2: ", koefs[2])
+	print("a3: ", koefs[3])
+	print("a12: ", koefs[4])
+	print("a13: ", koefs[5])
+	print("a23: ", koefs[6])
+	return koefs
+
 if __name__ == "__main__":
 	m1_min = 0.7
 	m1_max = 2.4
@@ -172,4 +275,5 @@ if __name__ == "__main__":
 	m2_max = 6
 	sigma2_min = 0.1
 	sigma2_max = 1/math.sqrt(3)
-	pfe(m1_min, m1_max, m2_min, m2_max, sigma2_min, sigma2_max)
+	times = 5
+	pfe(m1_min, m1_max, m2_min, m2_max, sigma2_min, sigma2_max, times)
