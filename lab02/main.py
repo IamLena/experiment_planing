@@ -124,7 +124,7 @@ def getStat(model, times):
 def printtable(table, times):
 	pt = PrettyTable()
 	column_name = "y_avg out of " + str(times)
-	pt.field_names = ["#", "x1", "x2", "x3", column_name, "y_dispersion"]
+	pt.field_names = ["#", "x1", "x2", "x3", column_name, "y_dispersion", "math result"]
 	for i in table:
 		pt.add_row(i)
 	print(pt)
@@ -161,6 +161,7 @@ def pfe(m1_min, m1_max, m2_min, m2_max, sigma2_min, sigma2_max, times):
 		tablerow.append(sigma2)
 		tablerow.append(y_avg)
 		tablerow.append(y_dispersion)
+		tablerow.append("-")
 		table.append(tablerow)
 	printtable(table, times)
 	Gp = maxdispersion/sumdisppersion
@@ -170,7 +171,9 @@ def pfe(m1_min, m1_max, m2_min, m2_max, sigma2_min, sigma2_max, times):
 	assert(Gp < 0.3910)
 	koefs = calculate_koefs(table)
 	y_hat = calculate(koefs)
-	print(y_hat)
+	for i in range(8):
+		table[i][6] = y_hat[i]
+	printtable(table, times)
 
 def calculate(koefs):
 	table = []
