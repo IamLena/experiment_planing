@@ -171,11 +171,28 @@ def pfe(m1_min, m1_max, m2_min, m2_max, sigma2_min, sigma2_max, times):
 	print("дисперсии воспроизводимости ", S)
 	assert(Gp < 0.3910)
 	koefs = calculate_koefs(table)
+	print_koefs(koefs)
 	y_hat = calculate(koefs)
 	for i in range(8):
 		table[i][6] = y_hat[i]
 		table[i][7] = table[i][4] - y_hat[i]
 	printtable(table, times)
+	diffsqsum = 0
+	for row in table:
+		diffsqsum += row[7]**2
+	Ss = times / 8 * diffsqsum
+	print("дисперсия адекватности: ", Ss)
+	F = Ss / S
+	print("Критерий Фишера: ", F)
+
+def print_koefs(koefs):
+	print("a0: ", koefs[0])
+	print("a1: ", koefs[1])
+	print("a2: ", koefs[2])
+	print("a3: ", koefs[3])
+	print("a12: ", koefs[4])
+	print("a13: ", koefs[5])
+	print("a23: ", koefs[6])
 
 def calculate(koefs):
 	table = []
@@ -263,14 +280,6 @@ def calculate_koefs(table):
 				aij_value += ones[n][i] * ones[n][j] * table[n][4]
 			aij_value /= N
 			koefs.append(aij_value)
-
-	print("a0: ", koefs[0])
-	print("a1: ", koefs[1])
-	print("a2: ", koefs[2])
-	print("a3: ", koefs[3])
-	print("a12: ", koefs[4])
-	print("a13: ", koefs[5])
-	print("a23: ", koefs[6])
 	return koefs
 
 if __name__ == "__main__":
