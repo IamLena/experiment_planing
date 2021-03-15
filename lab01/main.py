@@ -195,13 +195,13 @@ def getGraph():
 	wait_time = []
 
 	generators_conf_array = []
-	alpha = 3
+	alpha = 5
 	M = 10 / alpha
 	sigma = M * math.sqrt(2 / math.pi)
 	generators_conf_array.append(sigma)
 
-	ro = 0.1
-	while (ro < 5):
+	ro = 0.05
+	while (ro <= 1):
 		ro_array.append(ro)
 		operators_conf_array = []
 		mu = alpha / ro
@@ -218,7 +218,7 @@ def getGraph():
 		wait_time.append(getStat(model, 50))
 		print(ro_array)
 		print(wait_time)
-		ro += 0.2
+		ro += 0.05
 
 	plt.plot(ro_array, wait_time)
 	plt.xlabel("ro")
