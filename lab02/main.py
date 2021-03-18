@@ -110,7 +110,6 @@ class System:
 		self.operators[event[2]].busy = False
 		self.processed += 1
 
-
 def getStat(model, times):
 	waiting_time_arr = []
 
@@ -123,8 +122,8 @@ def getStat(model, times):
 
 def printtable(table, times):
 	pt = PrettyTable()
-	column_name = "y_avg out of " + str(times)
-	pt.field_names = ["#", "x1", "x2", "x3", column_name, "y_dispersion", "math result", "diff"]
+	column_name = "y среднее из " + str(times)
+	pt.field_names = ["#", "x1", "x2", "x3", column_name, "дисперсия y", "частично нелинейное", "разница", "линейное", "разница (линейное)"]
 	for i in table:
 		pt.add_row(i)
 	print(pt)
@@ -163,6 +162,8 @@ def pfe(m1_min, m1_max, m2_min, m2_max, sigma2_min, sigma2_max, times):
 		tablerow.append(y_dispersion)
 		tablerow.append("-")
 		tablerow.append("-")
+		tablerow.append("-")
+		tablerow.append("-")
 		table.append(tablerow)
 	printtable(table, times)
 	Gp = maxdispersion/sumdisppersion
@@ -173,9 +174,12 @@ def pfe(m1_min, m1_max, m2_min, m2_max, sigma2_min, sigma2_max, times):
 	koefs = calculate_koefs(table)
 	print_koefs(koefs)
 	y_hat = calculate(koefs)
+	y_hat_linear = calculate_linear(koefs)
 	for i in range(8):
 		table[i][6] = y_hat[i]
 		table[i][7] = table[i][4] - y_hat[i]
+		table[i][8] = y_hat_linear[i]
+		table[i][9] = table[i][4] - y_hat_linear[i]
 	printtable(table, times)
 	diffsqsum = 0
 	for row in table:
@@ -184,6 +188,7 @@ def pfe(m1_min, m1_max, m2_min, m2_max, sigma2_min, sigma2_max, times):
 	print("дисперсия адекватности: ", Ss)
 	F = Ss / S
 	print("Критерий Фишера: ", F)
+	return koefs
 
 def print_koefs(koefs):
 	print("a0: ", koefs[0])
@@ -193,6 +198,33 @@ def print_koefs(koefs):
 	print("a12: ", koefs[4])
 	print("a13: ", koefs[5])
 	print("a23: ", koefs[6])
+
+def calculate_linear(koefs):
+	table = []
+	for i in range (8):
+		tablerow = []
+		if (i & 0b00000001 == 0b00000001):
+			sigma2 = 1
+		else:
+			sigma2 = -1
+		if (i & 0b00000010 == 0b00000010):
+			m2 = 1
+		else:
+			m2 = -1
+		if (i & 0b00000100 == 0b00000100):
+			m1 = 1
+		else:
+			m1 = -1
+		tablerow.append(m1)
+		tablerow.append(m2)
+		tablerow.append(sigma2)
+		table.append(tablerow)
+	y_hat = []
+	N = len(table)
+	for i in range (N):
+		y_hat_value = koefs[0] + koefs[1]*table[i][0] + koefs[2]*table[i][1] + koefs[3]*table[i][2]
+		y_hat.append(y_hat_value)
+	return y_hat
 
 def calculate(koefs):
 	table = []
@@ -217,9 +249,14 @@ def calculate(koefs):
 	y_hat = []
 	N = len(table)
 	for i in range (N):
-		y_hat_value = koefs[0] + koefs[1]*table[i][0] + koefs[2]*table[i][1] + koefs[3]*table[i][2] + koefs[4]*table[i][0]*table[i][1] + koefs[5]*table[i][0]*table[i][2] + koefs[6]*table[i][1]*table[i][2]
+		y_hat_value = calculate_with_koefs(koefs, table[i][0], table[i][1], table[i][2])
+		# y_hat_value = koefs[0] + koefs[1]*table[i][0] + koefs[2]*table[i][1] + koefs[3]*table[i][2] + koefs[4]*table[i][0]*table[i][1] + koefs[5]*table[i][0]*table[i][2] + koefs[6]*table[i][1]*table[i][2]
 		y_hat.append(y_hat_value)
 	return y_hat
+
+def calculate_with_koefs(koefs, x1, x2, x3):
+	y_hat_value = koefs[0] + koefs[1]*x1 + koefs[2]*x2 + koefs[3]*x3 + koefs[4]*x1*x2 + koefs[5]*x1*x3 + koefs[6]*x2*x3
+	return y_hat_value
 
 def init_model(m1, m2, sigma2, start_time, end_time):
 	generators_conf_array = []
@@ -282,6 +319,34 @@ def calculate_koefs(table):
 			koefs.append(aij_value)
 	return koefs
 
+def getdot(m1_min, m1_max, m2_min, m2_max, sigma2_min, sigma2_max, times, koefs):
+	m1_prompt = "Введите интенсивность генерации " + str(m1_min) + " - " + str(m1_max) + ": "
+	m2_prompt = "Введите интенсивность обслуживания " + str(m2_min) + " - " + str(m2_max) + ": "
+	sigma2_prompt= "Введите среднеквадратическое отклонения обслуживания " + str(sigma2_min) + " - " + str(sigma2_max) + ": "
+	m1 = float(input(m1_prompt))
+	m2 = float(input(m2_prompt))
+	sigma2 = float(input(sigma2_prompt))
+	if (m1 < m1_min or m1 > m1_max):
+		print("Интенсивность генерации не входит в факторное пространство")
+	if (m2 < m2_min or m2 > m2_max):
+		print("Интенсивность обслуживания не входит в факторное пространство")
+		return
+	if (sigma2 < sigma2_min or sigma2 > sigma2_max):
+		print("Cреднеквадратическое отклонения обслуживания обслуживания не входит в факторное пространство")
+		return
+	m1_prop = 2 * (m1 - m1_min) / (m1_max - m1_min) - 1
+	m2_prop = 2 * (m2 - m2_min) / (m2_max - m2_min) - 1
+	sigma2_prop = 2 * (sigma2 - sigma2_min) / (sigma2_max - sigma2_min) - 1
+	y_value = calculate_with_koefs(koefs, m1_prop, m2_prop, sigma2_prop)
+	model = init_model(m1, m2, sigma2, 0, 20)
+	y_arr = getStat(model, times)
+	y = sum(y_arr) / len (y_arr)
+	print ("Расчитанное значение y: ", y_value)
+	print("Значение y полученное экспериментально", y)
+	print("Разность", y_value - y)
+
+
+
 if __name__ == "__main__":
 	m1_min = 0.7
 	m1_max = 2.4
@@ -290,4 +355,11 @@ if __name__ == "__main__":
 	sigma2_min = 0.1
 	sigma2_max = 1/math.sqrt(3)
 	times = 5
-	pfe(m1_min, m1_max, m2_min, m2_max, sigma2_min, sigma2_max, times)
+	koefs = pfe(m1_min, m1_max, m2_min, m2_max, sigma2_min, sigma2_max, times)
+	getdotflag = True
+	while (getdotflag):
+		flag = input('Ввести координаты из факторного пространства (ДA/нет)? ')
+		if (flag == '' or flag.lower() == 'да'):
+			getdot(m1_min, m1_max, m2_min, m2_max, sigma2_min, sigma2_max, times, koefs)
+		elif (flag.lower() == 'нет'):
+			getdotflag = False
