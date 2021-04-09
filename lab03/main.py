@@ -3,6 +3,7 @@ import numpy
 import math
 import matplotlib.pyplot as plt
 from prettytable import PrettyTable
+from itertools import combinations
 
 class Generator:
 	def __init__(self, sigma):
@@ -175,7 +176,7 @@ class PFE:
 		sumdisppersion = 0
 		maxdispersion = 0
 		for experiment in range (self.number_of_experiments):
-			model.set_generators_by_intensity([self.real_table[experiment][0]])
+			model.set_generators_by_intensity([self.real_table[experiment][0], self.real_table[experiment][3]])
 			model.set_operators_by_intensity_and_dispersion([[self.real_table[experiment][1], self.real_table[experiment][2]]])
 			y_ex_values = model.getStat(self.times)
 			y_ex_avg = sum(y_ex_values) / len (y_ex_values)
@@ -196,21 +197,24 @@ class PFE:
 		y_ex_avg_sum = 0
 		for experiment in range(self.number_of_experiments):
 			y_ex_avg_sum += self.real_table[experiment][self.number_of_factors]
-		self.koefs.append(y_ex_avg_sum / self.number_of_experiments)
+		self.koefs.append(y_ex_avg_sum / self.number_of_experiments) #a0
 
-		for factor in range (self.number_of_factors):
-			koef_value = 0
-			for experiment in range(self.number_of_experiments):
-				koef_value += self.plan_table[experiment][factor] * self.real_table[experiment][self.number_of_factors]
-			koef_value /= self.number_of_experiments
-			self.koefs.append(koef_value)
+		factor_indexes = []
+		for i in range (self.number_of_factors):
+			factor_indexes.append(i)
 
-		for factor1 in range(self.number_of_factors - 1):
-			for factor2 in range(factor1 + 1, self.number_of_factors):
+		print(self.real_table)
+
+		for i in range (1, self.number_of_factors + 1):
+			for j in combinations(factor_indexes, i):
 				koef_value = 0
 				for experiment in range(self.number_of_experiments):
-					koef_value += self.plan_table[experiment][factor1] * self.plan_table[experiment][factor2] * self.real_table[experiment][self.number_of_factors]
+					mult = 1
+					for k in range(i):
+						mult *= self.plan_table[experiment][j[k]]
+					koef_value += mult * self.real_table[experiment][self.number_of_factors]
 				koef_value /= self.number_of_experiments
+				print ("a", "".join(map(str,j)), " ", koef_value)
 				self.koefs.append(koef_value)
 
 	def calculate_partly_nonlinear(self, factors):
@@ -274,14 +278,6 @@ class PFE:
 			i += 1
 		print(pt)
 
-	def printkoefs(self):
-		print("a0: ", self.koefs[0])
-		for i in range (1, self.number_of_factors + 1):
-			print("a" + str(i) + ":", self.koefs[i])
-		for i in range (self.number_of_factors - 1):
-			for j in range (i + 1, self.number_of_factors):
-				print("a" + str(i + 1) + str(j + 1) + ":", self.koefs[self.number_of_factors + i + j])
-
 # дисперсия адекватности
 
 def get_prop(x_min, x_max, x):
@@ -294,15 +290,23 @@ def getdot(pfe):
 	m2_max = pfe.factors[1][1]
 	sigma2_min = pfe.factors[2][0]
 	sigma2_max = pfe.factors[2][1]
+	m3_min = pfe.factors[3][0]
+	m3_max = pfe.factors[3][1]
 
 	m1_prompt = "Введите интенсивность генерации " + str(m1_min) + " - " + str(m1_max) + ": "
+	m3_prompt = "Введите интенсивность второго генератора " + str(m3_min) + " - " + str(m3_max) + ": "
 	m2_prompt = "Введите интенсивность обслуживания " + str(m2_min) + " - " + str(m2_max) + ": "
 	sigma2_prompt= "Введите среднеквадратическое отклонения обслуживания " + str(sigma2_min) + " - " + str(sigma2_max) + ": "
 	m1 = float(input(m1_prompt))
 	m2 = float(input(m2_prompt))
 	sigma2 = float(input(sigma2_prompt))
+	m3 = float(input(m3_prompt))
 	if (m1 < m1_min or m1 > m1_max):
-		print("Интенсивность генерации не входит в факторное пространство")
+		print("Интенсивность генерации 1 не входит в факторное пространство")
+		return
+	if (m3 < m3_min or m3 > m3_max):
+		print("Интенсивность генерации 2 не входит в факторное пространство")
+		return
 	if (m2 < m2_min or m2 > m2_max):
 		print("Интенсивность обслуживания не входит в факторное пространство")
 		return
@@ -312,13 +316,14 @@ def getdot(pfe):
 	m1_prop = get_prop(m1_min, m1_max, m1)
 	m2_prop = get_prop(m2_min, m2_max, m2)
 	sigma2_prop = get_prop(sigma2_min, sigma2_max, sigma2)
+	m3_prop = get_prop(m3_min, m3_max, m3)
 
 	model = System()
-	model.set_generators_by_intensity([m1])
+	model.set_generators_by_intensity([m1, m3])
 	model.set_operators_by_intensity_and_dispersion([[m2, sigma2]])
 	y_avg = sum (model.getStat(5)) / 5
-	y_linear = pfe.calculate_linear([m1_prop, m2_prop, sigma2_prop])
-	y_nonlinear = pfe.calculate_partly_nonlinear([m1_prop, m2_prop, sigma2_prop])
+	y_linear = pfe.calculate_linear([m1_prop, m2_prop, sigma2_prop, m3_prop])
+	y_nonlinear = pfe.calculate_partly_nonlinear([m1_prop, m2_prop, sigma2_prop, m3_prop])
 
 	print("-------------------------------------------------------------------")
 	print("Значение y полученное экспериментально:\t\t", y_avg)
@@ -335,13 +340,14 @@ if __name__ == "__main__":
 	m2_max = 6
 	sigma2_min = 0.1
 	sigma2_max = 1/math.sqrt(3)
+	new_generator_m_min = 0.7
+	new_generator_m_max = 2.4
 	times = 5
-	min_max_factors = [[m1_min, m1_max], [m2_min, m2_max], [sigma2_min, sigma2_max]]
+	min_max_factors = [[m1_min, m1_max], [m2_min, m2_max], [sigma2_min, sigma2_max], [new_generator_m_min, new_generator_m_max]]
 	pfe = PFE(min_max_factors, times)
 	pfe.fill_experiment_data()
 	pfe.printtable()
 	pfe.fill_calculated_data()
-	pfe.printkoefs()
 	pfe.printtable()
 	pfe.check_adequacy()
 

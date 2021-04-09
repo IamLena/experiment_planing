@@ -3,6 +3,7 @@ import numpy
 import math
 import matplotlib.pyplot as plt
 from prettytable import PrettyTable
+from itertools import combinations
 
 class Generator:
 	def __init__(self, sigma):
@@ -196,21 +197,24 @@ class PFE:
 		y_ex_avg_sum = 0
 		for experiment in range(self.number_of_experiments):
 			y_ex_avg_sum += self.real_table[experiment][self.number_of_factors]
-		self.koefs.append(y_ex_avg_sum / self.number_of_experiments)
+		self.koefs.append(y_ex_avg_sum / self.number_of_experiments) #a0
 
-		for factor in range (self.number_of_factors):
-			koef_value = 0
-			for experiment in range(self.number_of_experiments):
-				koef_value += self.plan_table[experiment][factor] * self.real_table[experiment][self.number_of_factors]
-			koef_value /= self.number_of_experiments
-			self.koefs.append(koef_value)
+		factor_indexes = []
+		for i in range (self.number_of_factors):
+			factor_indexes.append(i)
 
-		for factor1 in range(self.number_of_factors - 1):
-			for factor2 in range(factor1 + 1, self.number_of_factors):
+		print(self.real_table)
+
+		for i in range (1, self.number_of_factors + 1):
+			for j in combinations(factor_indexes, i):
 				koef_value = 0
 				for experiment in range(self.number_of_experiments):
-					koef_value += self.plan_table[experiment][factor1] * self.plan_table[experiment][factor2] * self.real_table[experiment][self.number_of_factors]
+					mult = 1
+					for k in range(i):
+						mult *= self.plan_table[experiment][j[k]]
+					koef_value += mult * self.real_table[experiment][self.number_of_factors]
 				koef_value /= self.number_of_experiments
+				print ("a", "".join(map(str,j)), " ", koef_value)
 				self.koefs.append(koef_value)
 
 	def calculate_partly_nonlinear(self, factors):
@@ -274,14 +278,6 @@ class PFE:
 			i += 1
 		print(pt)
 
-	def printkoefs(self):
-		print("a0: ", self.koefs[0])
-		for i in range (1, self.number_of_factors + 1):
-			print("a" + str(i) + ":", self.koefs[i])
-		for i in range (self.number_of_factors - 1):
-			for j in range (i + 1, self.number_of_factors):
-				print("a" + str(i + 1) + str(j + 1) + ":", self.koefs[self.number_of_factors + i + j])
-
 # дисперсия адекватности
 
 def get_prop(x_min, x_max, x):
@@ -341,7 +337,6 @@ if __name__ == "__main__":
 	pfe.fill_experiment_data()
 	pfe.printtable()
 	pfe.fill_calculated_data()
-	pfe.printkoefs()
 	pfe.printtable()
 	pfe.check_adequacy()
 
