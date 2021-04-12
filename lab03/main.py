@@ -330,7 +330,195 @@ class PFE:
 			i += 1
 		print(pt)
 
-# дисперсия адекватности
+class DFE:
+	def __init__ (self, min_max_factors, times, p):
+		self.factors = min_max_factors
+		self.number_of_factors = len(min_max_factors)
+		self.p = p
+		self.number_of_experiments = 2 ** (self.number_of_factors - self.p)
+		self.create_plan_table()
+		self.create_real_table(min_max_factors)
+		self.times = times
+		self.experiment_data_filled = False
+		self.calculated_data_filled = False
+
+	def create_real_table(self, min_max_factors):
+		self.real_table = []
+		for experiment in range (self.number_of_experiments):
+			tablerow = []
+			for factor in range (self.number_of_factors):
+				if (self.plan_table[experiment][factor] == 1):
+					tablerow.append(min_max_factors[factor][1])
+				else:
+					tablerow.append(min_max_factors[factor][0])
+			self.real_table.append(tablerow)
+
+	def create_plan_table(self):
+		self.plan_table = []
+		for experiment in range (self.number_of_experiments):
+			tablerow = []
+			for factor in range (self.number_of_factors):
+				if factor == 3:
+					tablerow.append(tablerow[0] * tablerow[1]) #x4 = x1 * x2
+				else:
+					if (experiment & (1 << factor)):
+						tablerow.append(-1)
+					else:
+						tablerow.append(1)
+			self.plan_table.append(tablerow)
+		self.print_plan_table()
+
+	def print_plan_table(self):
+		pt = PrettyTable()
+		field_names = ['#']
+		for factor in range (self.number_of_factors + 1):
+			field_names.append('x' + str(factor))
+
+		pt.field_names = field_names
+		i = 1
+		for row in self.plan_table:
+			insertrow = row.copy()
+			insertrow.insert(0, i)
+			insertrow.insert(1, str(1))
+			pt.add_row(insertrow)
+			i += 1
+		print(pt)
+
+	def fill_experiment_data(self):
+		self.experiment_data_filled = True
+		model = System(0, 20)
+		sumdisppersion = 0
+		maxdispersion = 0
+		for experiment in range (self.number_of_experiments):
+			model.set_generators_by_intensity([self.real_table[experiment][0], self.real_table[experiment][3]])
+			model.set_operators_by_intensity_and_dispersion([[self.real_table[experiment][1], self.real_table[experiment][2]]])
+			y_ex_values = model.getStat(self.times)
+			y_ex_avg = sum(y_ex_values) / len (y_ex_values)
+			self.real_table[experiment].append(y_ex_avg)
+			y_dispersion = sum([(y_ex_avg - y_ex_value)**2 / self.times for y_ex_value in y_ex_values])
+			self.real_table[experiment].append(y_dispersion)
+			if (y_dispersion > maxdispersion):
+				maxdispersion = y_dispersion
+			sumdisppersion += y_dispersion
+
+		Gp = maxdispersion / sumdisppersion
+		print("Критерий Кохрена: ", Gp)
+		self.S = sumdisppersion / self.number_of_experiments
+		print("дисперсии воспроизводимости ", self.S)
+		self.Sak = (self.S / self.number_of_experiments / self.times) ** 0.5
+		print("среднее квадратическое отклонение коэффициента", self.Sak)
+		self.student_table = stats.t(df=(self.number_of_experiments * (self.times - 1))).ppf(0.95) #1.998
+		self.meaningful_koefs = 0
+
+	def calculate_koefs(self):
+		self.koefs = []
+		y_ex_avg_sum = 0
+		for experiment in range(self.number_of_experiments):
+			y_ex_avg_sum += self.real_table[experiment][self.number_of_factors]
+		self.koefs.append(y_ex_avg_sum / self.number_of_experiments) #a0
+
+		#ai
+		for factorindex in range(self.number_of_factors):
+			y_ex_avg_sum = 0
+			for experiment in range(self.number_of_experiments):
+				y_ex_avg_sum += self.plan_table[experiment][factorindex] * self.real_table[experiment][self.number_of_factors]
+			self.koefs.append(y_ex_avg_sum / self.number_of_experiments)
+
+		#a13
+		y_ex_avg_sum = 0
+		for experiment in range(self.number_of_experiments):
+			y_ex_avg_sum += self.plan_table[experiment][0] * self.plan_table[experiment][2] * self.real_table[experiment][self.number_of_factors]
+		self.koefs.append(y_ex_avg_sum / self.number_of_experiments)
+		#a23
+		y_ex_avg_sum = 0
+		for experiment in range(self.number_of_experiments):
+			y_ex_avg_sum += self.plan_table[experiment][1] * self.plan_table[experiment][2] * self.real_table[experiment][self.number_of_factors]
+		self.koefs.append(y_ex_avg_sum / self.number_of_experiments)
+		#a34
+		y_ex_avg_sum = 0
+		for experiment in range(self.number_of_experiments):
+			y_ex_avg_sum += self.plan_table[experiment][2] * self.plan_table[experiment][3] * self.real_table[experiment][self.number_of_factors]
+		self.koefs.append(y_ex_avg_sum / self.number_of_experiments)
+
+		print("Критерий Стьюдента: ", self.student_table)
+		lables = ["a0\t", "a1\t", "a2\t", "a3\t", "a4\t", "a13\t", "a23\t", "a34\t"]
+		for koefindex in range(len(self.koefs)):
+			koef_meaning = abs(self.koefs[koefindex])/self.Sak
+			if (koef_meaning >= self.student_table):
+				ending = "\t✓\n"
+				self.meaningful_koefs += 1
+			else:
+				ending = "\n"
+			print (lables[koefindex], round(self.koefs[koefindex], 7), "\t", round(koef_meaning, 7), end = ending)
+			if (koef_meaning < self.student_table):
+				self.koefs[koefindex] = 0
+
+	def calculate_partly_nonlinear(self, factors):
+		result = self.koefs[0]
+		for i in range (len(factors)):
+			result += self.koefs[i + 1] * factors[i]
+
+		result += self.koefs[self.number_of_factors] * factors[0] * factors[2] + self.koefs[self.number_of_factors+1] * factors[1] * factors[2] + self.koefs[self.number_of_factors+2]*factors[2]*factors[3]
+		return result
+
+	def calculate_linear(self, factors):
+		result = self.koefs[0]
+		for i in range (len(factors)):
+			result += self.koefs[i + 1] * factors[i]
+		return result
+
+	def fill_calculated_data(self):
+		self.calculate_koefs()
+		self.calculated_data_filled = True
+		for experiment in range (self.number_of_experiments):
+			y_cal_value_non = self.calculate_partly_nonlinear(self.plan_table[experiment])
+			y_cal_value = self.calculate_linear(self.plan_table[experiment])
+			self.real_table[experiment].append(y_cal_value)
+			self.real_table[experiment].append(y_cal_value_non)
+			y_ex_value = self.real_table[experiment][self.number_of_factors]
+			self.real_table[experiment].append(y_ex_value - y_cal_value)
+			self.real_table[experiment].append(y_ex_value - y_cal_value_non)
+
+	def check_adequacy(self):
+		print("дисперсии воспроизводимости ", self.S)
+		diffsqsum = 0
+		for row in self.real_table:
+			diffsqsum += row[self.number_of_factors + 5]**2
+		self.Ss = self.times / (self.number_of_experiments - self.meaningful_koefs) * diffsqsum
+		print("дисперсия адекватности: ", self.Ss)
+		self.F = self.Ss / self.S
+		print("Критерий Фишера (ад / вос): ", self.F)
+		if (self.F < 1):
+			q1 = self.number_of_experiments - self.meaningful_koefs
+			q2 = self.number_of_experiments
+		else:
+			q1 = self.number_of_experiments
+			q2 = self.number_of_experiments - self.meaningful_koefs
+		print("q1 ",q1, " q2 ", q2)
+
+	def printtable(self):
+		if (self.experiment_data_filled):
+			pt = PrettyTable()
+			field_names = ['#']
+			for factor in range (self.number_of_factors):
+				field_names.append('x' + str(factor + 1))
+			field_names.append('y среднее из ' + str(self.times) + ' опытов')
+			field_names.append('дисперсия y')
+
+		if (self.calculated_data_filled):
+			field_names.append('линейное')
+			field_names.append('частично нелинейное')
+			field_names.append('разница (линейное)')
+			field_names.append('разница (частично нелинейное)')
+
+		pt.field_names = field_names
+		i = 1
+		for row in self.real_table:
+			insertrow = row.copy()
+			insertrow.insert(0, i)
+			pt.add_row(insertrow)
+			i += 1
+		print(pt)
 
 def get_prop(x_min, x_max, x):
 	return 2 * (x - x_min) / (x_max - x_min) - 1
@@ -396,17 +584,25 @@ if __name__ == "__main__":
 	new_generator_m_max = 4.8
 	times = 5
 	min_max_factors = [[m1_min, m1_max], [m2_min, m2_max], [sigma2_min, sigma2_max], [new_generator_m_min, new_generator_m_max]]
-	pfe = PFE(min_max_factors, times)
-	pfe.fill_experiment_data()
-	pfe.printtable()
-	pfe.fill_calculated_data()
-	pfe.printtable()
-	pfe.check_adequacy()
+	# pfe = PFE(min_max_factors, times)
+	# pfe.fill_experiment_data()
+	# pfe.printtable()
+	# pfe.fill_calculated_data()
+	# pfe.printtable()
+	# pfe.check_adequacy()
 
-	getdotflag = True
-	while (getdotflag):
-		flag = input('Ввести координаты из факторного пространства (ДA/нет)? ')
-		if (flag == '' or flag.lower() == 'да'):
-			getdot(pfe)
-		elif (flag.lower() == 'нет'):
-			getdotflag = False
+	dfe = DFE(min_max_factors, times, 1)
+	dfe.fill_experiment_data()
+	dfe.printtable()
+	dfe.fill_calculated_data()
+	dfe.printtable()
+	dfe.check_adequacy()
+
+
+	# getdotflag = True
+	# while (getdotflag):
+	# 	flag = input('Ввести координаты из факторного пространства (ДA/нет)? ')
+	# 	if (flag == '' or flag.lower() == 'да'):
+	# 		getdot(pfe)
+	# 	elif (flag.lower() == 'нет'):
+	# 		getdotflag = False
