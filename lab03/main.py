@@ -4,6 +4,11 @@ import math
 import matplotlib.pyplot as plt
 from prettytable import PrettyTable
 from itertools import combinations
+from scipy import stats
+
+def increment(elem):
+	elem += 1
+	return elem
 
 class Generator:
 	def __init__(self, sigma):
@@ -169,6 +174,23 @@ class PFE:
 				else:
 					tablerow.append(1)
 			self.plan_table.append(tablerow)
+		self.print_plan_table()
+
+	def print_plan_table(self):
+		pt = PrettyTable()
+		field_names = ['#']
+		for factor in range (self.number_of_factors + 1):
+			field_names.append('x' + str(factor))
+
+		pt.field_names = field_names
+		i = 1
+		for row in self.plan_table:
+			insertrow = row.copy()
+			insertrow.insert(0, i)
+			insertrow.insert(1, str(1))
+			pt.add_row(insertrow)
+			i += 1
+		print(pt)
 
 	def fill_experiment_data(self):
 		self.experiment_data_filled = True
@@ -191,6 +213,10 @@ class PFE:
 		print("Критерий Кохрена: ", Gp)
 		self.S = sumdisppersion / self.number_of_experiments
 		print("дисперсии воспроизводимости ", self.S)
+		self.Sak = (self.S / self.number_of_experiments / self.times) ** 0.5
+		print("среднее квадратическое отклонение коэффициента", self.Sak)
+		self.student_table = stats.t(df=(self.number_of_experiments * (self.times - 1))).ppf(0.95) #1.998
+		self.meaningful_koefs = 0
 
 	def calculate_koefs(self):
 		self.koefs = []
@@ -198,13 +224,20 @@ class PFE:
 		for experiment in range(self.number_of_experiments):
 			y_ex_avg_sum += self.real_table[experiment][self.number_of_factors]
 		self.koefs.append(y_ex_avg_sum / self.number_of_experiments) #a0
+		koef_meaning = abs(self.koefs[0])/self.Sak
+		print("Критерий Стьюдента: ", self.student_table)
+		if (koef_meaning >= self.student_table):
+			ending = "\t✓\n"
+			self.meaningful_koefs += 1
+		else:
+			ending = "\n"
+		print ("a 0\t", round(self.koefs[0], 7), "\t", round(koef_meaning, 7), end = ending)
+		if (koef_meaning < self.student_table):
+			self.koefs[0] = 0
 
 		factor_indexes = []
 		for i in range (self.number_of_factors):
 			factor_indexes.append(i)
-
-		print(self.real_table)
-
 		for i in range (1, self.number_of_factors + 1):
 			for j in combinations(factor_indexes, i):
 				koef_value = 0
@@ -214,16 +247,28 @@ class PFE:
 						mult *= self.plan_table[experiment][j[k]]
 					koef_value += mult * self.real_table[experiment][self.number_of_factors]
 				koef_value /= self.number_of_experiments
-				print ("a", "".join(map(str,j)), " ", koef_value)
+				koef_meaning = abs(koef_value)/self.Sak
+				if (koef_meaning >= self.student_table):
+					ending = "\t✓\n"
+					self.meaningful_koefs += 1
+				else:
+					ending = "\n"
+				print ("a", "".join(map(str,map(increment, j))), "\t", round(koef_value, 7), "\t", round(koef_meaning, 7), end=ending)
+				if (koef_meaning < self.student_table):
+					koef_value = 0
 				self.koefs.append(koef_value)
 
 	def calculate_partly_nonlinear(self, factors):
 		result = self.koefs[0]
-		for i in range (self.number_of_factors):
-			result += self.koefs[i + 1] * factors[i]
-		for i in range (self.number_of_factors - 1):
-			for j in range (i + 1, self.number_of_factors):
-				result += self.koefs[self.number_of_factors + i + j] * factors[i] * factors[j]
+
+		koef_index = 1
+		for i in range (1, len(factors) + 1):
+			for j in combinations(factors, i):
+				mult = 1
+				for k in range(i):
+					mult *= j[k]
+				result += mult * self.koefs[koef_index]
+				koef_index += 1
 		return result
 
 	def calculate_linear(self, factors):
@@ -249,17 +294,24 @@ class PFE:
 		diffsqsum = 0
 		for row in self.real_table:
 			diffsqsum += row[self.number_of_factors + 5]**2
-		self.Ss = self.times / self.number_of_experiments * diffsqsum
+		self.Ss = self.times / (self.number_of_experiments - self.meaningful_koefs) * diffsqsum
 		print("дисперсия адекватности: ", self.Ss)
 		self.F = self.Ss / self.S
 		print("Критерий Фишера (ад / вос): ", self.F)
+		if (self.F < 1):
+			q1 = self.number_of_experiments - self.meaningful_koefs
+			q2 = self.number_of_experiments
+		else:
+			q1 = self.number_of_experiments
+			q2 = self.number_of_experiments - self.meaningful_koefs
+		print("q1 ",q1, " q2 ", q2)
 
 	def printtable(self):
 		if (self.experiment_data_filled):
 			pt = PrettyTable()
 			field_names = ['#']
 			for factor in range (self.number_of_factors):
-				field_names.append('x' + str(factor))
+				field_names.append('x' + str(factor + 1))
 			field_names.append('y среднее из ' + str(self.times) + ' опытов')
 			field_names.append('дисперсия y')
 
@@ -340,8 +392,8 @@ if __name__ == "__main__":
 	m2_max = 6
 	sigma2_min = 0.1
 	sigma2_max = 1/math.sqrt(3)
-	new_generator_m_min = 0.7
-	new_generator_m_max = 2.4
+	new_generator_m_min = 1.4
+	new_generator_m_max = 4.8
 	times = 5
 	min_max_factors = [[m1_min, m1_max], [m2_min, m2_max], [sigma2_min, sigma2_max], [new_generator_m_min, new_generator_m_max]]
 	pfe = PFE(min_max_factors, times)

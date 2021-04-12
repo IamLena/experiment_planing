@@ -199,6 +199,7 @@ def getGraph():
 	M = 10 / alpha
 	sigma = M * math.sqrt(2 / math.pi)
 	generators_conf_array.append(sigma)
+	generators_conf_array.append(sigma*2)
 
 	ro = 0.05
 	while (ro <= 1):
@@ -226,12 +227,12 @@ def getGraph():
 	plt.show()
 
 if __name__ == "__main__":
-	model = input_model()
-	times = int(input("Введите количество повторений моделирования для нахождения среднего значения: "))
-	assert(times > 0)
-	getStat(model, times)
+	# model = input_model()
+	# times = int(input("Введите количество повторений моделирования для нахождения среднего значения: "))
+	# assert(times > 0)
+	# getStat(model, times)
 
 	# model = System(0, 10, [2], [[2, 5]])
 	# getStat(model, 1)
 
-	# getGraph()
+	getGraph()

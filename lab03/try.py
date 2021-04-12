@@ -8,3 +8,4 @@ print (s)
 for i in range (5):
 	for j in combinations(s, i):
 		print(j, end=' ') # ab ac ad bc bd cd
+
