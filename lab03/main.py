@@ -10,6 +10,9 @@ def increment(elem):
 	elem += 1
 	return elem
 
+def get_value(x_min, x_max, prop):
+	return (prop + 1) / 2 * (x_max - x_min) + x_min
+
 class Generator:
 	def __init__(self, sigma):
 		assert(sigma >= 0)
@@ -54,7 +57,7 @@ class System:
 		self.generators_number = len(generators_conf_array)
 		self.generators = []
 		for i in range (self.generators_number):
-			sigma = generators_conf_array[i] * math.sqrt(2 / math.pi)
+			sigma = 1/generators_conf_array[i] * math.sqrt(2 / math.pi)
 			self.generators.append(Generator(sigma))
 
 	def set_operators_by_params(self, operators_conf_array = [[0, 2]]):
@@ -65,8 +68,8 @@ class System:
 		self.operators_number = len(operators_conf_array)
 		self.operators = []
 		for i in range (self.operators_number):
-			a = operators_conf_array[i][0] - operators_conf_array[i][1] * math.sqrt(3)
-			b = operators_conf_array[i][0] + operators_conf_array[i][1] * math.sqrt(3)
+			a = 1/operators_conf_array[i][0] - operators_conf_array[i][1] * math.sqrt(3)
+			b = 1/operators_conf_array[i][0] + operators_conf_array[i][1] * math.sqrt(3)
 			assert(a >= 0 and b >= 0 and a < b)
 			self.operators.append(Operator(a, b))
 
@@ -441,7 +444,7 @@ class DFE:
 		self.koefs.append(y_ex_avg_sum / self.number_of_experiments)
 
 		print("Критерий Стьюдента: ", self.student_table)
-		lables = ["a0\t", "a1\t", "a2\t", "a3\t", "a4\t", "a13\t", "a23\t", "a34\t"]
+		lables = ["a0*\t", "a1*\t", "a2*\t", "a3*\t", "a4*\t", "a13*\t", "a23*\t", "a34*\t"]
 		for koefindex in range(len(self.koefs)):
 			koef_meaning = abs(self.koefs[koefindex])/self.Sak
 			if (koef_meaning >= self.student_table):
@@ -453,13 +456,36 @@ class DFE:
 			if (koef_meaning < self.student_table):
 				self.koefs[koefindex] = 0
 
-	def calculate_partly_nonlinear(self, factors):
-		result = self.koefs[0]
-		for i in range (len(factors)):
-			result += self.koefs[i + 1] * factors[i]
+		self.allkoefs = [self.koefs[0], self.koefs[1], self.koefs[2], self.koefs[3], self.koefs[4], 0, self.koefs[5]/2, 0, self.koefs[6]/2, 0, self.koefs[7]/2, self.koefs[7]/2, 0, self.koefs[6]/2, self.koefs[5]/2, 0]
 
-		result += self.koefs[self.number_of_factors] * factors[0] * factors[2] + self.koefs[self.number_of_factors+1] * factors[1] * factors[2] + self.koefs[self.number_of_factors+2]*factors[2]*factors[3]
+		factor_indexes = [i for i in range (self.number_of_factors)]
+		index = 0
+		print()
+		for i in range (1, self.number_of_factors + 1):
+			for j in combinations(factor_indexes, i):
+				print ("a", "".join(map(str,map(increment, j))), "\t", self.allkoefs[index])
+				index += 1
+
+	def calculate_partly_nonlinear(self, factors):
+		result = self.allkoefs[0]
+		koef_index = 1
+		for i in range (1, len(factors) + 1):
+			for j in combinations(factors, i):
+				mult = 1
+				for k in range(i):
+					mult *= j[k]
+				result += mult * self.allkoefs[koef_index]
+				koef_index += 1
 		return result
+
+
+		# result = self.koefs[0]
+		# for i in range (len(factors)):
+		# 	result += self.koefs[i + 1] * factors[i]
+
+
+		# result += self.koefs[self.number_of_factors] * factors[0] * factors[2] + self.koefs[self.number_of_factors+1] * factors[1] * factors[2] + self.koefs[self.number_of_factors+2]*factors[2]*factors[3]
+		# return result
 
 	def calculate_linear(self, factors):
 		result = self.koefs[0]
@@ -572,25 +598,93 @@ def getdot(pfe):
 	print("Расчитанное значение y (частично-нелинейное):\t", y_nonlinear)
 	print("Разница (частично-нелинейное):\t\t\t", y_avg - y_nonlinear)
 
+def getdotbyprop(pfe, dfe):
+	m1_min = pfe.factors[0][0]
+	m1_max = pfe.factors[0][1]
+	m2_min = pfe.factors[1][0]
+	m2_max = pfe.factors[1][1]
+	sigma2_min = pfe.factors[2][0]
+	sigma2_max = pfe.factors[2][1]
+	m3_min = pfe.factors[3][0]
+	m3_max = pfe.factors[3][1]
+
+	m1_min = dfe.factors[0][0]
+	m1_max = dfe.factors[0][1]
+	m2_min = dfe.factors[1][0]
+	m2_max = dfe.factors[1][1]
+	sigma2_min = dfe.factors[2][0]
+	sigma2_max = dfe.factors[2][1]
+	m3_min = dfe.factors[3][0]
+	m3_max = dfe.factors[3][1]
+
+	m1_prompt = "Введите кодированное значение интенсивности генерации: "
+	m3_prompt = "Введите интенсивность второго генератора "
+	m2_prompt = "Введите кодированное значение интенсивности обслуживания: "
+	sigma2_prompt= "Введите кодированное значение среднеквадратического отклонения обслуживания: "
+	m1_prop = float(input(m1_prompt))
+	m3_prop = float(input(m3_prompt))
+	m2_prop = float(input(m2_prompt))
+	sigma2_prop = float(input(sigma2_prompt))
+	if (m1_prop < -1 or m1_prop > 1):
+		print("Интенсивность генерации не входит в факторное пространство")
+	if (m3_prop < -1 or m3_prop > 1):
+		print("Интенсивность генерации 2 не входит в факторное пространство")
+	if (m2_prop < -1 or m2_prop > 1):
+		print("Интенсивность обслуживания не входит в факторное пространство")
+		return
+	if (sigma2_prop < -1 or sigma2_prop > 1):
+		print("Cреднеквадратическое отклонения обслуживания обслуживания не входит в факторное пространство")
+		return
+	m1 = get_value(m1_min, m1_max, m1_prop)
+	m2 = get_value(m2_min, m2_max, m2_prop)
+	sigma2 = get_value(sigma2_min, sigma2_max, sigma2_prop)
+	m3 = get_value(m3_min, m3_max, m3_prop)
+
+	model = System()
+	model.set_generators_by_intensity([m1, m3])
+	model.set_operators_by_intensity_and_dispersion([[m2, sigma2]])
+	y_avg = sum (model.getStat(5)) / 5
+	y_linear = pfe.calculate_linear([m1_prop, m2_prop, sigma2_prop, m3_prop])
+	y_nonlinear = pfe.calculate_partly_nonlinear([m1_prop, m2_prop, sigma2_prop, m3_prop])
+
+	y_linear_d = dfe.calculate_linear([m1_prop, m2_prop, sigma2_prop, m3_prop])
+	y_nonlinear_d = dfe.calculate_partly_nonlinear([m1_prop, m2_prop, sigma2_prop, m3_prop])
+
+	print("-------------------------------------------------------------------")
+	print("Значение y полученное экспериментально:\t\t", y_avg)
+	print()
+	print("Расчитанное значение y (линейное) по ПФЭ:\t\t", y_linear)
+	print("Разница (линейное) по ПФЭ:\t\t\t\t", y_avg - y_linear)
+	print("Расчитанное значение y (частично-нелинейное) по ПФЭ:\t", y_nonlinear)
+	print("Разница (частично-нелинейное) по ПФЭ:\t\t\t", y_avg - y_nonlinear)
+	print()
+	print("Расчитанное значение y (линейное) по ДФЭ:\t\t", y_linear_d)
+	print("Разница (линейное) по ДФЭ:\t\t\t\t", y_avg - y_linear_d)
+	print("Расчитанное значение y (частично-нелинейное) по ДФЭ:\t", y_nonlinear_d)
+	print("Разница (частично-нелинейное) по ДФЭ:\t\t\t", y_avg - y_nonlinear_d)
+
 
 if __name__ == "__main__":
-	m1_min = 0.7
-	m1_max = 2.4
-	m2_min = 5
-	m2_max = 6
+	m1_max = 1/ 0.7
+	m1_min = 1/2.4
+	m2_max = 1/5
+	m2_min = 1/6
 	sigma2_min = 0.1
 	sigma2_max = 1/math.sqrt(3)
-	new_generator_m_min = 1.4
-	new_generator_m_max = 4.8
+	new_generator_m_max = 1/1.4
+	new_generator_m_min = 1/4.8
 	times = 5
 	min_max_factors = [[m1_min, m1_max], [m2_min, m2_max], [sigma2_min, sigma2_max], [new_generator_m_min, new_generator_m_max]]
-	# pfe = PFE(min_max_factors, times)
-	# pfe.fill_experiment_data()
-	# pfe.printtable()
-	# pfe.fill_calculated_data()
-	# pfe.printtable()
-	# pfe.check_adequacy()
 
+	print ("PFE")
+	pfe = PFE(min_max_factors, times)
+	pfe.fill_experiment_data()
+	pfe.printtable()
+	pfe.fill_calculated_data()
+	pfe.printtable()
+	pfe.check_adequacy()
+
+	print ("DFE")
 	dfe = DFE(min_max_factors, times, 1)
 	dfe.fill_experiment_data()
 	dfe.printtable()
@@ -598,11 +692,10 @@ if __name__ == "__main__":
 	dfe.printtable()
 	dfe.check_adequacy()
 
-
-	# getdotflag = True
-	# while (getdotflag):
-	# 	flag = input('Ввести координаты из факторного пространства (ДA/нет)? ')
-	# 	if (flag == '' or flag.lower() == 'да'):
-	# 		getdot(pfe)
-	# 	elif (flag.lower() == 'нет'):
-	# 		getdotflag = False
+	getdotflag = True
+	while (getdotflag):
+		flag = input('Ввести координаты из факторного пространства (ДA/нет)? ')
+		if (flag == '' or flag.lower() == 'да'):
+			getdotbyprop(pfe, dfe)
+		elif (flag.lower() == 'нет'):
+			getdotflag = False

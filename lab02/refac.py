@@ -4,6 +4,11 @@ import math
 import matplotlib.pyplot as plt
 from prettytable import PrettyTable
 from itertools import combinations
+from scipy import stats
+
+def increment(elem):
+	elem += 1
+	return elem
 
 class Generator:
 	def __init__(self, sigma):
@@ -49,7 +54,8 @@ class System:
 		self.generators_number = len(generators_conf_array)
 		self.generators = []
 		for i in range (self.generators_number):
-			sigma = generators_conf_array[i] * math.sqrt(2 / math.pi)
+			sigma = 1 / generators_conf_array[i] / math.sqrt(math.pi / 2)
+			# sigma = generators_conf_array[i] * math.sqrt(2 / math.pi)
 			self.generators.append(Generator(sigma))
 
 	def set_operators_by_params(self, operators_conf_array = [[0, 2]]):
@@ -60,8 +66,12 @@ class System:
 		self.operators_number = len(operators_conf_array)
 		self.operators = []
 		for i in range (self.operators_number):
-			a = operators_conf_array[i][0] - operators_conf_array[i][1] * math.sqrt(3)
-			b = operators_conf_array[i][0] + operators_conf_array[i][1] * math.sqrt(3)
+			M = 1 / operators_conf_array[i][0]
+			dis = operators_conf_array[i][1]
+			a = M - dis * math.sqrt(3)
+			b = M + dis * math.sqrt(3)
+			# a = operators_conf_array[i][0] - operators_conf_array[i][1] * math.sqrt(3)
+			# b = operators_conf_array[i][0] + operators_conf_array[i][1] * math.sqrt(3)
 			assert(a >= 0 and b >= 0 and a < b)
 			self.operators.append(Operator(a, b))
 
@@ -147,6 +157,7 @@ class PFE:
 		self.times = times
 		self.experiment_data_filled = False
 		self.calculated_data_filled = False
+		self.print_plan_table()
 
 	def create_real_table(self, min_max_factors):
 		self.real_table = []
@@ -191,6 +202,10 @@ class PFE:
 		print("Критерий Кохрена: ", Gp)
 		self.S = sumdisppersion / self.number_of_experiments
 		print("дисперсии воспроизводимости ", self.S)
+		self.Sak = (self.S / self.number_of_experiments / self.times) ** 0.5
+		print("среднее квадратическое отклонение коэффициента", self.Sak)
+		self.student_table = stats.t(df=(self.number_of_experiments * (self.times - 1))).ppf(0.95) #1.998
+		self.meaningful_koefs = 0
 
 	def calculate_koefs(self):
 		self.koefs = []
@@ -198,13 +213,20 @@ class PFE:
 		for experiment in range(self.number_of_experiments):
 			y_ex_avg_sum += self.real_table[experiment][self.number_of_factors]
 		self.koefs.append(y_ex_avg_sum / self.number_of_experiments) #a0
+		koef_meaning = abs(self.koefs[0])/self.Sak
+		print("Критерий Стьюдента: ", self.student_table)
+		if (koef_meaning >= self.student_table):
+			ending = "\t✓\n"
+			self.meaningful_koefs += 1
+		else:
+			ending = "\n"
+		print ("a 0\t", round(self.koefs[0], 7), "\t", round(koef_meaning, 7), end = ending)
+		if (koef_meaning < self.student_table):
+			self.koefs[0] = 0
 
 		factor_indexes = []
 		for i in range (self.number_of_factors):
 			factor_indexes.append(i)
-
-		print(self.real_table)
-
 		for i in range (1, self.number_of_factors + 1):
 			for j in combinations(factor_indexes, i):
 				koef_value = 0
@@ -214,16 +236,28 @@ class PFE:
 						mult *= self.plan_table[experiment][j[k]]
 					koef_value += mult * self.real_table[experiment][self.number_of_factors]
 				koef_value /= self.number_of_experiments
-				print ("a", "".join(map(str,j)), " ", koef_value)
+				koef_meaning = abs(koef_value)/self.Sak
+				if (koef_meaning >= self.student_table):
+					ending = "\t✓\n"
+					self.meaningful_koefs += 1
+				else:
+					ending = "\n"
+				print ("a", "".join(map(str,map(increment, j))), "\t", round(koef_value, 7), "\t", round(koef_meaning, 7), end=ending)
+				if (koef_meaning < self.student_table):
+					koef_value = 0
 				self.koefs.append(koef_value)
 
 	def calculate_partly_nonlinear(self, factors):
 		result = self.koefs[0]
-		for i in range (self.number_of_factors):
-			result += self.koefs[i + 1] * factors[i]
-		for i in range (self.number_of_factors - 1):
-			for j in range (i + 1, self.number_of_factors):
-				result += self.koefs[self.number_of_factors + i + j] * factors[i] * factors[j]
+
+		koef_index = 1
+		for i in range (1, len(factors) + 1):
+			for j in combinations(factors, i):
+				mult = 1
+				for k in range(i):
+					mult *= j[k]
+				result += mult * self.koefs[koef_index]
+				koef_index += 1
 		return result
 
 	def calculate_linear(self, factors):
@@ -254,12 +288,28 @@ class PFE:
 		self.F = self.Ss / self.S
 		print("Критерий Фишера (ад / вос): ", self.F)
 
+	def print_plan_table(self):
+		pt = PrettyTable()
+		field_names = ['#']
+		for factor in range (self.number_of_factors + 1):
+			field_names.append('x' + str(factor))
+
+		pt.field_names = field_names
+		i = 1
+		for row in self.plan_table:
+			insertrow = row.copy()
+			insertrow.insert(0, i)
+			insertrow.insert(1, str(1))
+			pt.add_row(insertrow)
+			i += 1
+		print(pt)
+
 	def printtable(self):
 		if (self.experiment_data_filled):
 			pt = PrettyTable()
 			field_names = ['#']
 			for factor in range (self.number_of_factors):
-				field_names.append('x' + str(factor))
+				field_names.append('x' + str(factor + 1))
 			field_names.append('y среднее из ' + str(self.times) + ' опытов')
 			field_names.append('дисперсия y')
 
@@ -282,6 +332,9 @@ class PFE:
 
 def get_prop(x_min, x_max, x):
 	return 2 * (x - x_min) / (x_max - x_min) - 1
+
+def get_value(x_min, x_max, prop):
+	return (prop + 1) / 2 * (x_max - x_min) + x_min
 
 def getdot(pfe):
 	m1_min = pfe.factors[0][0]
@@ -323,12 +376,52 @@ def getdot(pfe):
 	print("Расчитанное значение y (частично-нелинейное):\t", y_nonlinear)
 	print("Разница (частично-нелинейное):\t\t\t", y_avg - y_nonlinear)
 
+def getdotbyprop(pfe):
+	m1_min = pfe.factors[0][0]
+	m1_max = pfe.factors[0][1]
+	m2_min = pfe.factors[1][0]
+	m2_max = pfe.factors[1][1]
+	sigma2_min = pfe.factors[2][0]
+	sigma2_max = pfe.factors[2][1]
+
+	m1_prompt = "Введите кодированное значение интенсивности генерации: "
+	m2_prompt = "Введите кодированное значение интенсивности обслуживания: "
+	sigma2_prompt= "Введите кодированное значение среднеквадратического отклонения обслуживания: "
+	m1_prop = float(input(m1_prompt))
+	m2_prop = float(input(m2_prompt))
+	sigma2_prop = float(input(sigma2_prompt))
+	if (m1_prop < -1 or m1_prop > 1):
+		print("Интенсивность генерации не входит в факторное пространство")
+	if (m2_prop < -1 or m2_prop > 1):
+		print("Интенсивность обслуживания не входит в факторное пространство")
+		return
+	if (sigma2_prop < -1 or sigma2_prop > 1):
+		print("Cреднеквадратическое отклонения обслуживания обслуживания не входит в факторное пространство")
+		return
+	m1 = get_value(m1_min, m1_max, m1_prop)
+	m2 = get_value(m2_min, m2_max, m2_prop)
+	sigma2 = get_value(sigma2_min, sigma2_max, sigma2_prop)
+
+	model = System()
+	model.set_generators_by_intensity([m1])
+	model.set_operators_by_intensity_and_dispersion([[m2, sigma2]])
+	y_avg = sum (model.getStat(5)) / 5
+	y_linear = pfe.calculate_linear([m1_prop, m2_prop, sigma2_prop])
+	y_nonlinear = pfe.calculate_partly_nonlinear([m1_prop, m2_prop, sigma2_prop])
+
+	print("-------------------------------------------------------------------")
+	print("Значение y полученное экспериментально:\t\t", y_avg)
+	print("Расчитанное значение y (линейное):\t\t", y_linear)
+	print("Разница (линейное):\t\t\t\t", y_avg - y_linear)
+	print("Расчитанное значение y (частично-нелинейное):\t", y_nonlinear)
+	print("Разница (частично-нелинейное):\t\t\t", y_avg - y_nonlinear)
+
 
 if __name__ == "__main__":
-	m1_min = 0.7
-	m1_max = 2.4
-	m2_min = 5
-	m2_max = 6
+	m1_max = 1/0.7
+	m1_min = 1/2.4
+	m2_max = 1/5
+	m2_min = 1/6
 	sigma2_min = 0.1
 	sigma2_max = 1/math.sqrt(3)
 	times = 5
@@ -344,6 +437,6 @@ if __name__ == "__main__":
 	while (getdotflag):
 		flag = input('Ввести координаты из факторного пространства (ДA/нет)? ')
 		if (flag == '' or flag.lower() == 'да'):
-			getdot(pfe)
+			getdotbyprop(pfe)
 		elif (flag.lower() == 'нет'):
 			getdotflag = False
