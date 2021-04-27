@@ -36,7 +36,6 @@ class Generator:
 		assert(self.a >= 0 and self.b >= 0 and self.a < self.b)
 		self.id = id
 
-
 	def generate_new_task(self):
 		arrivetimes = numpy.random.rayleigh(self.sigma, 1)
 		operatetime = random.uniform(self.a, self.b)
@@ -45,8 +44,9 @@ class Generator:
 
 # takes time of generated task to get operated
 class Operator:
-	def __init__(self):
+	def __init__(self, id):
 		self.busy = False
+		self.id = id
 
 class System:
 	# generators_conf_array [[sigma, a, b], [sigma2, a2, b2]]
@@ -62,7 +62,7 @@ class System:
 
 		assert(number_of_multioperators > 0)
 		self.operators_number = number_of_multioperators
-		self.operators = [Operator() for i in range(self.operators_number)]
+		self.operators = [Operator(i) for i in range(self.operators_number)]
 
 		self.queue_length = 0
 		self.max_queue_length = 0
@@ -92,6 +92,32 @@ class System:
 			i += 1
 		self.events.insert(i, event)
 
+	def set_to_wait(self, event, task):
+		i = 0
+		while i < len(self.events) and self.events[i][0] <= event[0]:
+			while i < len(self.events) and self.events[i][0] <= event[0] and self.events[i][1] != 'done':
+				i += 1
+			event[0] = self.events[i][0] #done time
+			i += 1
+		task.waits(event[0])
+		self.events.insert(i, [event[0], 'came', task])
+		# print("TASK IS GOING TO WAIT")
+		# print(self.events)
+
+		# return task back to queue on its place
+		# task that wasnt taken to the operation when its came
+		# it is move till free operator
+
+		# task.waits(event[0])
+		# i = 0
+		# while i < len(self.events) and self.events[i][0] <= event[0] and self.events[i][1] != 'done':
+		# 	i += 1
+		# event[0] = self.events[i][0] #done time
+		# i += 1
+		# while i < len(self.events) and self.events[i][0] == event[0]:
+		# 	i += 1
+		# self.events.insert(i, [event[0], 'came', task])
+
 	# event method
 	def modeling(self):
 		# init queue; first tasks from each generator
@@ -101,7 +127,16 @@ class System:
 
 		cur_time = self.start_time
 		while cur_time < self.end_time:
+			print("BEFORE POPPING")
+			print(self.events)
 			event = self.events.pop(0)
+			print("AFTER POPPING")
+			print(self.events)
+			# print(event)
+			# event[2].print()
+			if (cur_time > event[0]):
+				self.set_to_wait(event, event[2])
+				continue
 			cur_time = event[0]
 			if event[1] == 'came':
 				# at current time this new task came to the queue, so
@@ -137,21 +172,12 @@ class System:
 				self.max_waiting_time = task.await_time
 			self.add_event([event[0] + task.time_to_operate, 'done', task])
 		else:
-			# return task back to queue on its place
-			# task that wasnt taken to the operation when its came
-			# it is move till free operator
-			task.waits(event[0])
-			i = 0
-			while i < len(self.events) and self.events[i][0] <= event[0] and self.events[i][1] != 'done':
-				i += 1
-			event[0] = self.events[i][0]
-			while i < len(self.events) and self.events[i][0] == event[0]:
-				i += 1
-			self.events.insert(i + 1, [event[0], 'came', task])
+			self.set_to_wait(event, task)
 
 		newtask = self.generators[task.generator_id].generate_new_task()
 		newtask.arrive_time += task.arrive_time
 		self.add_event([newtask.arrive_time, 'came', newtask])
+		# self.set_to_wait([newtask.arrive_time, 'came', newtask], newtask)
 
 	def finish_operate(self, event):
 		task = event[2]
@@ -187,7 +213,7 @@ def getStat(model, times):
 	avg_waiting_time /= times
 	max_waiting_time /= times
 	print("---------------------------------------------------------")
-	print("длина очереди в конце моделировная\t\t\t", queue_length)
+	print("длина очереди в конце моделирования\t\t\t", queue_length)
 	print("максимальная длина очереди за время моделирования\t", max_queue_length)
 	print("количество сгенерированных заявок\t\t\t", generated)
 	print("количество заявок, отправленных на обслуживание\t\t", started_processing)
@@ -200,40 +226,47 @@ def getGraph():
 	ro_array = []
 	wait_time = []
 
-	generators_conf_array = []
-	alpha = 5
-	M = 10 / alpha
-	sigma = M * math.sqrt(2 / math.pi)
-	generators_conf_array.append(sigma)
-	generators_conf_array.append(sigma*2)
+	x1 = 0.125
+	x2 = 0.5
+	x3 = 0.1
+	x4 = 0.125
+	x5 = 0.5
+	x6 = 0.1
 
-	ro = 0.05
-	while (ro <= 1):
-		ro_array.append(ro)
-		operators_conf_array = []
-		mu = alpha / ro
-		M = 10 / mu
-		sigma = 0.05 * M #just 5% of M
-		a = M - sigma * math.sqrt(3)
-		b = M + sigma * math.sqrt(3)
-		operators_conf_array.append([a, b])
+	x1 = 0.525
 
-		model = System(0, 50, generators_conf_array, operators_conf_array)
-		# model.modeling()
-		# wait_time.append(model.avg_waiting_time)
+	# range for intensity of first generator 0.125 - 1, avg = 1-8
+	# while x1 < 1:
+	print("x1 ", x1, "x2 ", x2, "x3 ", x3, "x4 ", x4, "x5 ", x5, "x6 ", x6)
+	sigma1 =  1 / x1 * math.sqrt(2 / math.pi)
+	a1 = 1/x2 - x3 * math.sqrt(3)
+	b1 = 1/x2 + x3 * math.sqrt(3)
 
-		wait_time.append(getStat(model, 50))
-		print(ro_array)
-		print(wait_time)
-		ro += 0.05
+	sigma2 =  1 / x4 * math.sqrt(2 / math.pi)
+	a2 = 1/x5 - x6 * math.sqrt(3)
+	b2 = 1/x5 + x6 * math.sqrt(3)
 
-	plt.plot(ro_array, wait_time)
-	plt.xlabel("ro")
-	plt.ylabel("ave_wait_time")
-	plt.show()
+	generators_conf_array = [[sigma1, a1, b1], [sigma2, a2, b2]]
+	model = System(0, 10, generators_conf_array)
+
+	ro = (x1 + x4) / (x2 + x5)
+	ro_array.append(ro)
+	print("ro ", ro)
+	wait_time.append(getStat(model, 1))
+
+		# x1 += 0.2
+
+	print(ro_array)
+	print(wait_time)
+
+	# plt.plot(ro_array, wait_time)
+	# plt.xlabel("ro")
+	# plt.ylabel("ave_wait_time")
+	# plt.show()
 
 if __name__ == "__main__":
-	model = System(0, 10, [[2, 5, 7]])
-	getStat(model, 1)
+	# model = System(0, 20, [[5, 1, 2]])
+	# getStat(model, 1)
+
 	# [[sigma, a, b], [sigma2, a2, b2]]
-	# getGraph()
+	getGraph()

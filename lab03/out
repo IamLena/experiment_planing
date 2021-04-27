@@ -1,0 +1,2316 @@
+0.1 0.17 0.1 0.08 0.125 1
+7.978845608028654 5.709147860419582 6.055558021933358 9.973557010035817 6.267949192431123 9.732050807568877
+10.0 5.88235294117647 12.5 8.0
+
+GENERATE FIRST TASKS
+17.650584473448905
+status		 new
+gen id		 0
+arrival		 17.650584473448905
+time to operate		 5.740876764322148
+len queue:  1
+[<__main__.Event object at 0x7faee8ad6e10>]
+
+GENERATE FIRST TASKS
+18.88530822029866
+status		 new
+gen id		 1
+arrival		 18.88530822029866
+time to operate		 9.479163098616906
+len queue:  2
+[<__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8ad6fd0>]
+
+CUR TIME 0
+
+POPPED EVENT
+17.650584473448905
+len queue:  1
+[<__main__.Event object at 0x7faee8ad6fd0>]
+status		 new
+gen id		 0
+arrival		 17.650584473448905
+time to operate		 5.740876764322148
+
+GENERATE NEW TASK
+20.55930692962602
+status		 new
+gen id		 0
+arrival		 20.55930692962602
+time to operate		 5.785932752186497
+len queue:  2
+[<__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8adf290>]
+
+TASK IS BEING PROCESSED
+23.391461237771054
+status		 done
+gen id		 0
+arrival		 17.650584473448905
+time to operate		 5.740876764322148
+await time		 0.0
+op id		 0
+len queue:  3
+[<__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8adf290>, <__main__.Event object at 0x7faee8ad6e10>]
+
+CUR TIME 18.88530822029866
+
+POPPED EVENT
+18.88530822029866
+len queue:  2
+[<__main__.Event object at 0x7faee8adf290>, <__main__.Event object at 0x7faee8ad6e10>]
+status		 new
+gen id		 1
+arrival		 18.88530822029866
+time to operate		 9.479163098616906
+
+GENERATE NEW TASK
+26.384428718799484
+status		 new
+gen id		 1
+arrival		 26.384428718799484
+time to operate		 8.027133075798869
+len queue:  3
+[<__main__.Event object at 0x7faee8adf290>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8adf6d0>]
+
+TASK IS GOINT TO WAIT
+18.88530822029866
+status		 waits
+gen id		 1
+arrival		 18.88530822029866
+time to operate		 9.479163098616906
+len queue:  4
+[<__main__.Event object at 0x7faee8adf290>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8adf6d0>]
+
+CUR TIME 20.55930692962602
+
+POPPED EVENT
+20.55930692962602
+len queue:  3
+[<__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8adf6d0>]
+status		 new
+gen id		 0
+arrival		 20.55930692962602
+time to operate		 5.785932752186497
+
+GENERATE NEW TASK
+23.052519619410447
+status		 new
+gen id		 0
+arrival		 23.052519619410447
+time to operate		 5.775501184559506
+len queue:  4
+[<__main__.Event object at 0x7faee8adfb10>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8adf6d0>]
+
+TASK IS GOINT TO WAIT
+20.55930692962602
+status		 waits
+gen id		 0
+arrival		 20.55930692962602
+time to operate		 5.785932752186497
+len queue:  5
+[<__main__.Event object at 0x7faee8adfb10>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8adfc90>, <__main__.Event object at 0x7faee8adf6d0>]
+
+CUR TIME 23.052519619410447
+
+POPPED EVENT
+23.052519619410447
+len queue:  4
+[<__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8adfc90>, <__main__.Event object at 0x7faee8adf6d0>]
+status		 new
+gen id		 0
+arrival		 23.052519619410447
+time to operate		 5.775501184559506
+
+GENERATE NEW TASK
+27.61738416726962
+status		 new
+gen id		 0
+arrival		 27.61738416726962
+time to operate		 5.733868190736038
+len queue:  5
+[<__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8adfc90>, <__main__.Event object at 0x7faee8adf6d0>, <__main__.Event object at 0x7faee8adff90>]
+
+TASK IS GOINT TO WAIT
+23.052519619410447
+status		 waits
+gen id		 0
+arrival		 23.052519619410447
+time to operate		 5.775501184559506
+len queue:  6
+[<__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8adfc90>, <__main__.Event object at 0x7faee8ae1150>, <__main__.Event object at 0x7faee8adf6d0>, <__main__.Event object at 0x7faee8adff90>]
+
+CUR TIME 23.391461237771054
+
+POPPED EVENT
+23.391461237771054
+len queue:  5
+[<__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8adfc90>, <__main__.Event object at 0x7faee8ae1150>, <__main__.Event object at 0x7faee8adf6d0>, <__main__.Event object at 0x7faee8adff90>]
+status		 done
+gen id		 0
+arrival		 17.650584473448905
+time to operate		 5.740876764322148
+await time		 0.0
+op id		 0
+
+POPPED TASK IS DONE
+23.391461237771054
+status		 done
+gen id		 0
+arrival		 17.650584473448905
+time to operate		 5.740876764322148
+await time		 0.0
+op id		 0
+
+CUR TIME 23.391461237771054
+
+POPPED EVENT
+23.391461237771054
+len queue:  4
+[<__main__.Event object at 0x7faee8adfc90>, <__main__.Event object at 0x7faee8ae1150>, <__main__.Event object at 0x7faee8adf6d0>, <__main__.Event object at 0x7faee8adff90>]
+status		 waits
+gen id		 1
+arrival		 18.88530822029866
+time to operate		 9.479163098616906
+
+TASK IS BEING PROCESSED
+32.87062433638796
+status		 done
+gen id		 1
+arrival		 18.88530822029866
+time to operate		 9.479163098616906
+await time		 4.506153017472393
+op id		 0
+len queue:  5
+[<__main__.Event object at 0x7faee8adfc90>, <__main__.Event object at 0x7faee8ae1150>, <__main__.Event object at 0x7faee8adf6d0>, <__main__.Event object at 0x7faee8adff90>, <__main__.Event object at 0x7faee8adf850>]
+
+CUR TIME 23.391461237771054
+
+POPPED EVENT
+23.391461237771054
+len queue:  4
+[<__main__.Event object at 0x7faee8ae1150>, <__main__.Event object at 0x7faee8adf6d0>, <__main__.Event object at 0x7faee8adff90>, <__main__.Event object at 0x7faee8adf850>]
+status		 waits
+gen id		 0
+arrival		 20.55930692962602
+time to operate		 5.785932752186497
+
+TASK IS GOINT TO WAIT
+23.391461237771054
+status		 waits
+gen id		 0
+arrival		 20.55930692962602
+time to operate		 5.785932752186497
+len queue:  5
+[<__main__.Event object at 0x7faee8ae1150>, <__main__.Event object at 0x7faee8adf6d0>, <__main__.Event object at 0x7faee8adff90>, <__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8ae1890>]
+
+CUR TIME 23.391461237771054
+
+POPPED EVENT
+23.391461237771054
+len queue:  4
+[<__main__.Event object at 0x7faee8adf6d0>, <__main__.Event object at 0x7faee8adff90>, <__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8ae1890>]
+status		 waits
+gen id		 0
+arrival		 23.052519619410447
+time to operate		 5.775501184559506
+
+TASK IS GOINT TO WAIT
+23.391461237771054
+status		 waits
+gen id		 0
+arrival		 23.052519619410447
+time to operate		 5.775501184559506
+len queue:  5
+[<__main__.Event object at 0x7faee8adf6d0>, <__main__.Event object at 0x7faee8adff90>, <__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1b10>]
+
+CUR TIME 26.384428718799484
+
+POPPED EVENT
+26.384428718799484
+len queue:  4
+[<__main__.Event object at 0x7faee8adff90>, <__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1b10>]
+status		 new
+gen id		 1
+arrival		 26.384428718799484
+time to operate		 8.027133075798869
+
+GENERATE NEW TASK
+29.04526960425482
+status		 new
+gen id		 1
+arrival		 29.04526960425482
+time to operate		 7.9284683968066005
+len queue:  5
+[<__main__.Event object at 0x7faee8adff90>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1b10>]
+
+TASK IS GOINT TO WAIT
+26.384428718799484
+status		 waits
+gen id		 1
+arrival		 26.384428718799484
+time to operate		 8.027133075798869
+len queue:  6
+[<__main__.Event object at 0x7faee8adff90>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1b10>, <__main__.Event object at 0x7faee8ae1f50>]
+
+CUR TIME 27.61738416726962
+
+POPPED EVENT
+27.61738416726962
+len queue:  5
+[<__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1b10>, <__main__.Event object at 0x7faee8ae1f50>]
+status		 new
+gen id		 0
+arrival		 27.61738416726962
+time to operate		 5.733868190736038
+
+GENERATE NEW TASK
+39.38187164698286
+status		 new
+gen id		 0
+arrival		 39.38187164698286
+time to operate		 5.993902036256151
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1b10>, <__main__.Event object at 0x7faee8ae1f50>, <__main__.Event object at 0x7faee8ad6bd0>]
+
+TASK IS GOINT TO WAIT
+27.61738416726962
+status		 waits
+gen id		 0
+arrival		 27.61738416726962
+time to operate		 5.733868190736038
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1b10>, <__main__.Event object at 0x7faee8ae1f50>, <__main__.Event object at 0x7faee8ad6f10>, <__main__.Event object at 0x7faee8ad6bd0>]
+
+CUR TIME 29.04526960425482
+
+POPPED EVENT
+29.04526960425482
+len queue:  6
+[<__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1b10>, <__main__.Event object at 0x7faee8ae1f50>, <__main__.Event object at 0x7faee8ad6f10>, <__main__.Event object at 0x7faee8ad6bd0>]
+status		 new
+gen id		 1
+arrival		 29.04526960425482
+time to operate		 7.9284683968066005
+
+GENERATE NEW TASK
+45.1135707075058
+status		 new
+gen id		 1
+arrival		 45.1135707075058
+time to operate		 9.047704845108264
+len queue:  7
+[<__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1b10>, <__main__.Event object at 0x7faee8ae1f50>, <__main__.Event object at 0x7faee8ad6f10>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1210>]
+
+TASK IS GOINT TO WAIT
+29.04526960425482
+status		 waits
+gen id		 1
+arrival		 29.04526960425482
+time to operate		 7.9284683968066005
+len queue:  8
+[<__main__.Event object at 0x7faee8adf850>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1b10>, <__main__.Event object at 0x7faee8ae1f50>, <__main__.Event object at 0x7faee8ad6f10>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1210>]
+
+CUR TIME 32.87062433638796
+
+POPPED EVENT
+32.87062433638796
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1b10>, <__main__.Event object at 0x7faee8ae1f50>, <__main__.Event object at 0x7faee8ad6f10>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1210>]
+status		 done
+gen id		 1
+arrival		 18.88530822029866
+time to operate		 9.479163098616906
+await time		 4.506153017472393
+op id		 0
+
+POPPED TASK IS DONE
+32.87062433638796
+status		 done
+gen id		 1
+arrival		 18.88530822029866
+time to operate		 9.479163098616906
+await time		 4.506153017472393
+op id		 0
+
+CUR TIME 32.87062433638796
+
+POPPED EVENT
+32.87062433638796
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1b10>, <__main__.Event object at 0x7faee8ae1f50>, <__main__.Event object at 0x7faee8ad6f10>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1210>]
+status		 waits
+gen id		 0
+arrival		 20.55930692962602
+time to operate		 5.785932752186497
+
+TASK IS BEING PROCESSED
+38.65655708857446
+status		 done
+gen id		 0
+arrival		 20.55930692962602
+time to operate		 5.785932752186497
+await time		 12.311317406761944
+op id		 0
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1b10>, <__main__.Event object at 0x7faee8ae1f50>, <__main__.Event object at 0x7faee8ad6f10>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1210>]
+
+CUR TIME 32.87062433638796
+
+POPPED EVENT
+32.87062433638796
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1f50>, <__main__.Event object at 0x7faee8ad6f10>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1210>]
+status		 waits
+gen id		 0
+arrival		 23.052519619410447
+time to operate		 5.775501184559506
+
+TASK IS GOINT TO WAIT
+32.87062433638796
+status		 waits
+gen id		 0
+arrival		 23.052519619410447
+time to operate		 5.775501184559506
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1f50>, <__main__.Event object at 0x7faee8ad6f10>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1210>]
+
+CUR TIME 32.87062433638796
+
+POPPED EVENT
+32.87062433638796
+len queue:  6
+[<__main__.Event object at 0x7faee8ad6f10>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1210>]
+status		 waits
+gen id		 1
+arrival		 26.384428718799484
+time to operate		 8.027133075798869
+
+TASK IS GOINT TO WAIT
+32.87062433638796
+status		 waits
+gen id		 1
+arrival		 26.384428718799484
+time to operate		 8.027133075798869
+len queue:  7
+[<__main__.Event object at 0x7faee8ad6f10>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1f10>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1210>]
+
+CUR TIME 32.87062433638796
+
+POPPED EVENT
+32.87062433638796
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1f10>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1210>]
+status		 waits
+gen id		 0
+arrival		 27.61738416726962
+time to operate		 5.733868190736038
+
+TASK IS GOINT TO WAIT
+32.87062433638796
+status		 waits
+gen id		 0
+arrival		 27.61738416726962
+time to operate		 5.733868190736038
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1f10>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1210>]
+
+CUR TIME 32.87062433638796
+
+POPPED EVENT
+32.87062433638796
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1f10>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1210>]
+status		 waits
+gen id		 1
+arrival		 29.04526960425482
+time to operate		 7.9284683968066005
+
+TASK IS GOINT TO WAIT
+32.87062433638796
+status		 waits
+gen id		 1
+arrival		 29.04526960425482
+time to operate		 7.9284683968066005
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1890>, <__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1f10>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1210>]
+
+CUR TIME 38.65655708857446
+
+POPPED EVENT
+38.65655708857446
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1f10>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1210>]
+status		 done
+gen id		 0
+arrival		 20.55930692962602
+time to operate		 5.785932752186497
+await time		 12.311317406761944
+op id		 0
+
+POPPED TASK IS DONE
+38.65655708857446
+status		 done
+gen id		 0
+arrival		 20.55930692962602
+time to operate		 5.785932752186497
+await time		 12.311317406761944
+op id		 0
+
+CUR TIME 38.65655708857446
+
+POPPED EVENT
+38.65655708857446
+len queue:  5
+[<__main__.Event object at 0x7faee8ae1f10>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1210>]
+status		 waits
+gen id		 0
+arrival		 23.052519619410447
+time to operate		 5.775501184559506
+
+TASK IS BEING PROCESSED
+44.43205827313396
+status		 done
+gen id		 0
+arrival		 23.052519619410447
+time to operate		 5.775501184559506
+await time		 15.604037469164012
+op id		 0
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1f10>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1210>]
+
+CUR TIME 38.65655708857446
+
+POPPED EVENT
+38.65655708857446
+len queue:  5
+[<__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1210>]
+status		 waits
+gen id		 1
+arrival		 26.384428718799484
+time to operate		 8.027133075798869
+
+TASK IS GOINT TO WAIT
+38.65655708857446
+status		 waits
+gen id		 1
+arrival		 26.384428718799484
+time to operate		 8.027133075798869
+len queue:  6
+[<__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8ae1210>]
+
+CUR TIME 38.65655708857446
+
+POPPED EVENT
+38.65655708857446
+len queue:  5
+[<__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8ae1210>]
+status		 waits
+gen id		 0
+arrival		 27.61738416726962
+time to operate		 5.733868190736038
+
+TASK IS GOINT TO WAIT
+38.65655708857446
+status		 waits
+gen id		 0
+arrival		 27.61738416726962
+time to operate		 5.733868190736038
+len queue:  6
+[<__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8ae13d0>, <__main__.Event object at 0x7faee8ae1210>]
+
+CUR TIME 38.65655708857446
+
+POPPED EVENT
+38.65655708857446
+len queue:  5
+[<__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8ae13d0>, <__main__.Event object at 0x7faee8ae1210>]
+status		 waits
+gen id		 1
+arrival		 29.04526960425482
+time to operate		 7.9284683968066005
+
+TASK IS GOINT TO WAIT
+38.65655708857446
+status		 waits
+gen id		 1
+arrival		 29.04526960425482
+time to operate		 7.9284683968066005
+len queue:  6
+[<__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8ae13d0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1210>]
+
+CUR TIME 39.38187164698286
+
+POPPED EVENT
+39.38187164698286
+len queue:  5
+[<__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8ae13d0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1210>]
+status		 new
+gen id		 0
+arrival		 39.38187164698286
+time to operate		 5.993902036256151
+
+GENERATE NEW TASK
+40.208629128716005
+status		 new
+gen id		 0
+arrival		 40.208629128716005
+time to operate		 5.890699982344848
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1990>, <__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8ae13d0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1210>]
+
+TASK IS GOINT TO WAIT
+39.38187164698286
+status		 waits
+gen id		 0
+arrival		 39.38187164698286
+time to operate		 5.993902036256151
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1990>, <__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8ae13d0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1210>]
+
+CUR TIME 40.208629128716005
+
+POPPED EVENT
+40.208629128716005
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8ae13d0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1210>]
+status		 new
+gen id		 0
+arrival		 40.208629128716005
+time to operate		 5.890699982344848
+
+GENERATE NEW TASK
+51.72184798301037
+status		 new
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8ae13d0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1e50>]
+
+TASK IS GOINT TO WAIT
+40.208629128716005
+status		 waits
+gen id		 0
+arrival		 40.208629128716005
+time to operate		 5.890699982344848
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1c50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8ae13d0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1e50>]
+
+CUR TIME 44.43205827313396
+
+POPPED EVENT
+44.43205827313396
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8ae13d0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1e50>]
+status		 done
+gen id		 0
+arrival		 23.052519619410447
+time to operate		 5.775501184559506
+await time		 15.604037469164012
+op id		 0
+
+POPPED TASK IS DONE
+44.43205827313396
+status		 done
+gen id		 0
+arrival		 23.052519619410447
+time to operate		 5.775501184559506
+await time		 15.604037469164012
+op id		 0
+
+CUR TIME 44.43205827313396
+
+POPPED EVENT
+44.43205827313396
+len queue:  6
+[<__main__.Event object at 0x7faee8ae13d0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1e50>]
+status		 waits
+gen id		 1
+arrival		 26.384428718799484
+time to operate		 8.027133075798869
+
+TASK IS BEING PROCESSED
+52.45919134893283
+status		 done
+gen id		 1
+arrival		 26.384428718799484
+time to operate		 8.027133075798869
+await time		 18.047629554334478
+op id		 0
+len queue:  7
+[<__main__.Event object at 0x7faee8ae13d0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1050>]
+
+CUR TIME 44.43205827313396
+
+POPPED EVENT
+44.43205827313396
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1050>]
+status		 waits
+gen id		 0
+arrival		 27.61738416726962
+time to operate		 5.733868190736038
+
+TASK IS GOINT TO WAIT
+44.43205827313396
+status		 waits
+gen id		 0
+arrival		 27.61738416726962
+time to operate		 5.733868190736038
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf810>]
+
+CUR TIME 44.43205827313396
+
+POPPED EVENT
+44.43205827313396
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf810>]
+status		 waits
+gen id		 1
+arrival		 29.04526960425482
+time to operate		 7.9284683968066005
+
+TASK IS GOINT TO WAIT
+44.43205827313396
+status		 waits
+gen id		 1
+arrival		 29.04526960425482
+time to operate		 7.9284683968066005
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ad6c10>]
+
+CUR TIME 44.43205827313396
+
+POPPED EVENT
+44.43205827313396
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ad6c10>]
+status		 waits
+gen id		 0
+arrival		 39.38187164698286
+time to operate		 5.993902036256151
+
+TASK IS GOINT TO WAIT
+44.43205827313396
+status		 waits
+gen id		 0
+arrival		 39.38187164698286
+time to operate		 5.993902036256151
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ad6bd0>]
+
+CUR TIME 44.43205827313396
+
+POPPED EVENT
+44.43205827313396
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ad6bd0>]
+status		 waits
+gen id		 0
+arrival		 40.208629128716005
+time to operate		 5.890699982344848
+
+TASK IS GOINT TO WAIT
+44.43205827313396
+status		 waits
+gen id		 0
+arrival		 40.208629128716005
+time to operate		 5.890699982344848
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1310>]
+
+CUR TIME 45.1135707075058
+
+POPPED EVENT
+45.1135707075058
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1310>]
+status		 new
+gen id		 1
+arrival		 45.1135707075058
+time to operate		 9.047704845108264
+
+GENERATE NEW TASK
+58.35017167724409
+status		 new
+gen id		 1
+arrival		 58.35017167724409
+time to operate		 6.496743961188125
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1310>, <__main__.Event object at 0x7faee8ae1610>]
+
+TASK IS GOINT TO WAIT
+45.1135707075058
+status		 waits
+gen id		 1
+arrival		 45.1135707075058
+time to operate		 9.047704845108264
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1310>, <__main__.Event object at 0x7faee8ae17d0>, <__main__.Event object at 0x7faee8ae1610>]
+
+CUR TIME 51.72184798301037
+
+POPPED EVENT
+51.72184798301037
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1310>, <__main__.Event object at 0x7faee8ae17d0>, <__main__.Event object at 0x7faee8ae1610>]
+status		 new
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+
+GENERATE NEW TASK
+68.12605060686204
+status		 new
+gen id		 0
+arrival		 68.12605060686204
+time to operate		 5.874949211698729
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1310>, <__main__.Event object at 0x7faee8ae17d0>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+
+TASK IS GOINT TO WAIT
+51.72184798301037
+status		 waits
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1310>, <__main__.Event object at 0x7faee8ae17d0>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+
+CUR TIME 52.45919134893283
+
+POPPED EVENT
+52.45919134893283
+len queue:  8
+[<__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1310>, <__main__.Event object at 0x7faee8ae17d0>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+status		 done
+gen id		 1
+arrival		 26.384428718799484
+time to operate		 8.027133075798869
+await time		 18.047629554334478
+op id		 0
+
+POPPED TASK IS DONE
+52.45919134893283
+status		 done
+gen id		 1
+arrival		 26.384428718799484
+time to operate		 8.027133075798869
+await time		 18.047629554334478
+op id		 0
+
+CUR TIME 52.45919134893283
+
+POPPED EVENT
+52.45919134893283
+len queue:  7
+[<__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1310>, <__main__.Event object at 0x7faee8ae17d0>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+status		 waits
+gen id		 0
+arrival		 27.61738416726962
+time to operate		 5.733868190736038
+
+TASK IS BEING PROCESSED
+58.19305953966887
+status		 done
+gen id		 0
+arrival		 27.61738416726962
+time to operate		 5.733868190736038
+await time		 24.841807181663214
+op id		 0
+len queue:  8
+[<__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1310>, <__main__.Event object at 0x7faee8ae17d0>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+
+CUR TIME 52.45919134893283
+
+POPPED EVENT
+52.45919134893283
+len queue:  7
+[<__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1310>, <__main__.Event object at 0x7faee8ae17d0>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+status		 waits
+gen id		 1
+arrival		 29.04526960425482
+time to operate		 7.9284683968066005
+
+TASK IS GOINT TO WAIT
+52.45919134893283
+status		 waits
+gen id		 1
+arrival		 29.04526960425482
+time to operate		 7.9284683968066005
+len queue:  8
+[<__main__.Event object at 0x7faee8ad6bd0>, <__main__.Event object at 0x7faee8ae1310>, <__main__.Event object at 0x7faee8ae17d0>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+
+CUR TIME 52.45919134893283
+
+POPPED EVENT
+52.45919134893283
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1310>, <__main__.Event object at 0x7faee8ae17d0>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+status		 waits
+gen id		 0
+arrival		 39.38187164698286
+time to operate		 5.993902036256151
+
+TASK IS GOINT TO WAIT
+52.45919134893283
+status		 waits
+gen id		 0
+arrival		 39.38187164698286
+time to operate		 5.993902036256151
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1310>, <__main__.Event object at 0x7faee8ae17d0>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+
+CUR TIME 52.45919134893283
+
+POPPED EVENT
+52.45919134893283
+len queue:  7
+[<__main__.Event object at 0x7faee8ae17d0>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+status		 waits
+gen id		 0
+arrival		 40.208629128716005
+time to operate		 5.890699982344848
+
+TASK IS GOINT TO WAIT
+52.45919134893283
+status		 waits
+gen id		 0
+arrival		 40.208629128716005
+time to operate		 5.890699982344848
+len queue:  8
+[<__main__.Event object at 0x7faee8ae17d0>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+
+CUR TIME 52.45919134893283
+
+POPPED EVENT
+52.45919134893283
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+status		 waits
+gen id		 1
+arrival		 45.1135707075058
+time to operate		 9.047704845108264
+
+TASK IS GOINT TO WAIT
+52.45919134893283
+status		 waits
+gen id		 1
+arrival		 45.1135707075058
+time to operate		 9.047704845108264
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8ae16d0>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+
+CUR TIME 52.45919134893283
+
+POPPED EVENT
+52.45919134893283
+len queue:  7
+[<__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8ae16d0>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+status		 waits
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+
+TASK IS GOINT TO WAIT
+52.45919134893283
+status		 waits
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+len queue:  8
+[<__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8ae16d0>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+
+CUR TIME 58.19305953966887
+
+POPPED EVENT
+58.19305953966887
+len queue:  7
+[<__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8ae16d0>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+status		 done
+gen id		 0
+arrival		 27.61738416726962
+time to operate		 5.733868190736038
+await time		 24.841807181663214
+op id		 0
+
+POPPED TASK IS DONE
+58.19305953966887
+status		 done
+gen id		 0
+arrival		 27.61738416726962
+time to operate		 5.733868190736038
+await time		 24.841807181663214
+op id		 0
+
+CUR TIME 58.19305953966887
+
+POPPED EVENT
+58.19305953966887
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8ae16d0>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8ae1bd0>]
+status		 waits
+gen id		 1
+arrival		 29.04526960425482
+time to operate		 7.9284683968066005
+
+TASK IS BEING PROCESSED
+66.12152793647547
+status		 done
+gen id		 1
+arrival		 29.04526960425482
+time to operate		 7.9284683968066005
+await time		 29.147789935414053
+op id		 0
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8ae16d0>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8ae1bd0>]
+
+CUR TIME 58.19305953966887
+
+POPPED EVENT
+58.19305953966887
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8ae16d0>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8ae1bd0>]
+status		 waits
+gen id		 0
+arrival		 39.38187164698286
+time to operate		 5.993902036256151
+
+TASK IS GOINT TO WAIT
+58.19305953966887
+status		 waits
+gen id		 0
+arrival		 39.38187164698286
+time to operate		 5.993902036256151
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8ae16d0>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae1bd0>]
+
+CUR TIME 58.19305953966887
+
+POPPED EVENT
+58.19305953966887
+len queue:  6
+[<__main__.Event object at 0x7faee8ae16d0>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae1bd0>]
+status		 waits
+gen id		 0
+arrival		 40.208629128716005
+time to operate		 5.890699982344848
+
+TASK IS GOINT TO WAIT
+58.19305953966887
+status		 waits
+gen id		 0
+arrival		 40.208629128716005
+time to operate		 5.890699982344848
+len queue:  7
+[<__main__.Event object at 0x7faee8ae16d0>, <__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf0d0>, <__main__.Event object at 0x7faee8ae1bd0>]
+
+CUR TIME 58.19305953966887
+
+POPPED EVENT
+58.19305953966887
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf0d0>, <__main__.Event object at 0x7faee8ae1bd0>]
+status		 waits
+gen id		 1
+arrival		 45.1135707075058
+time to operate		 9.047704845108264
+
+TASK IS GOINT TO WAIT
+58.19305953966887
+status		 waits
+gen id		 1
+arrival		 45.1135707075058
+time to operate		 9.047704845108264
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1210>, <__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf0d0>, <__main__.Event object at 0x7faee8adfad0>, <__main__.Event object at 0x7faee8ae1bd0>]
+
+CUR TIME 58.19305953966887
+
+POPPED EVENT
+58.19305953966887
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf0d0>, <__main__.Event object at 0x7faee8adfad0>, <__main__.Event object at 0x7faee8ae1bd0>]
+status		 waits
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+
+TASK IS GOINT TO WAIT
+58.19305953966887
+status		 waits
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1610>, <__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf0d0>, <__main__.Event object at 0x7faee8adfad0>, <__main__.Event object at 0x7faee8adf750>, <__main__.Event object at 0x7faee8ae1bd0>]
+
+CUR TIME 58.35017167724409
+
+POPPED EVENT
+58.35017167724409
+len queue:  6
+[<__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf0d0>, <__main__.Event object at 0x7faee8adfad0>, <__main__.Event object at 0x7faee8adf750>, <__main__.Event object at 0x7faee8ae1bd0>]
+status		 new
+gen id		 1
+arrival		 58.35017167724409
+time to operate		 6.496743961188125
+
+GENERATE NEW TASK
+68.31490272417237
+status		 new
+gen id		 1
+arrival		 68.31490272417237
+time to operate		 7.087760019403864
+len queue:  7
+[<__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf0d0>, <__main__.Event object at 0x7faee8adfad0>, <__main__.Event object at 0x7faee8adf750>, <__main__.Event object at 0x7faee8ae1bd0>, <__main__.Event object at 0x7faee8ad6e90>]
+
+TASK IS GOINT TO WAIT
+58.35017167724409
+status		 waits
+gen id		 1
+arrival		 58.35017167724409
+time to operate		 6.496743961188125
+len queue:  8
+[<__main__.Event object at 0x7faee8adf4d0>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf0d0>, <__main__.Event object at 0x7faee8adfad0>, <__main__.Event object at 0x7faee8adf750>, <__main__.Event object at 0x7faee8ad6cd0>, <__main__.Event object at 0x7faee8ae1bd0>, <__main__.Event object at 0x7faee8ad6e90>]
+
+CUR TIME 66.12152793647547
+
+POPPED EVENT
+66.12152793647547
+len queue:  7
+[<__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf0d0>, <__main__.Event object at 0x7faee8adfad0>, <__main__.Event object at 0x7faee8adf750>, <__main__.Event object at 0x7faee8ad6cd0>, <__main__.Event object at 0x7faee8ae1bd0>, <__main__.Event object at 0x7faee8ad6e90>]
+status		 done
+gen id		 1
+arrival		 29.04526960425482
+time to operate		 7.9284683968066005
+await time		 29.147789935414053
+op id		 0
+
+POPPED TASK IS DONE
+66.12152793647547
+status		 done
+gen id		 1
+arrival		 29.04526960425482
+time to operate		 7.9284683968066005
+await time		 29.147789935414053
+op id		 0
+
+CUR TIME 66.12152793647547
+
+POPPED EVENT
+66.12152793647547
+len queue:  6
+[<__main__.Event object at 0x7faee8adf0d0>, <__main__.Event object at 0x7faee8adfad0>, <__main__.Event object at 0x7faee8adf750>, <__main__.Event object at 0x7faee8ad6cd0>, <__main__.Event object at 0x7faee8ae1bd0>, <__main__.Event object at 0x7faee8ad6e90>]
+status		 waits
+gen id		 0
+arrival		 39.38187164698286
+time to operate		 5.993902036256151
+
+TASK IS BEING PROCESSED
+72.11542997273162
+status		 done
+gen id		 0
+arrival		 39.38187164698286
+time to operate		 5.993902036256151
+await time		 26.739656289492615
+op id		 0
+len queue:  7
+[<__main__.Event object at 0x7faee8adf0d0>, <__main__.Event object at 0x7faee8adfad0>, <__main__.Event object at 0x7faee8adf750>, <__main__.Event object at 0x7faee8ad6cd0>, <__main__.Event object at 0x7faee8ae1bd0>, <__main__.Event object at 0x7faee8ad6e90>, <__main__.Event object at 0x7faee8adf810>]
+
+CUR TIME 66.12152793647547
+
+POPPED EVENT
+66.12152793647547
+len queue:  6
+[<__main__.Event object at 0x7faee8adfad0>, <__main__.Event object at 0x7faee8adf750>, <__main__.Event object at 0x7faee8ad6cd0>, <__main__.Event object at 0x7faee8ae1bd0>, <__main__.Event object at 0x7faee8ad6e90>, <__main__.Event object at 0x7faee8adf810>]
+status		 waits
+gen id		 0
+arrival		 40.208629128716005
+time to operate		 5.890699982344848
+
+TASK IS GOINT TO WAIT
+66.12152793647547
+status		 waits
+gen id		 0
+arrival		 40.208629128716005
+time to operate		 5.890699982344848
+len queue:  7
+[<__main__.Event object at 0x7faee8adfad0>, <__main__.Event object at 0x7faee8adf750>, <__main__.Event object at 0x7faee8ad6cd0>, <__main__.Event object at 0x7faee8ae1bd0>, <__main__.Event object at 0x7faee8ad6e90>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae19d0>]
+
+CUR TIME 66.12152793647547
+
+POPPED EVENT
+66.12152793647547
+len queue:  6
+[<__main__.Event object at 0x7faee8adf750>, <__main__.Event object at 0x7faee8ad6cd0>, <__main__.Event object at 0x7faee8ae1bd0>, <__main__.Event object at 0x7faee8ad6e90>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae19d0>]
+status		 waits
+gen id		 1
+arrival		 45.1135707075058
+time to operate		 9.047704845108264
+
+TASK IS GOINT TO WAIT
+66.12152793647547
+status		 waits
+gen id		 1
+arrival		 45.1135707075058
+time to operate		 9.047704845108264
+len queue:  7
+[<__main__.Event object at 0x7faee8adf750>, <__main__.Event object at 0x7faee8ad6cd0>, <__main__.Event object at 0x7faee8ae1bd0>, <__main__.Event object at 0x7faee8ad6e90>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e10>]
+
+CUR TIME 66.12152793647547
+
+POPPED EVENT
+66.12152793647547
+len queue:  6
+[<__main__.Event object at 0x7faee8ad6cd0>, <__main__.Event object at 0x7faee8ae1bd0>, <__main__.Event object at 0x7faee8ad6e90>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e10>]
+status		 waits
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+
+TASK IS GOINT TO WAIT
+66.12152793647547
+status		 waits
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+len queue:  7
+[<__main__.Event object at 0x7faee8ad6cd0>, <__main__.Event object at 0x7faee8ae1bd0>, <__main__.Event object at 0x7faee8ad6e90>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e10>, <__main__.Event object at 0x7faee8ae1050>]
+
+CUR TIME 66.12152793647547
+
+POPPED EVENT
+66.12152793647547
+len queue:  6
+[<__main__.Event object at 0x7faee8ae1bd0>, <__main__.Event object at 0x7faee8ad6e90>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e10>, <__main__.Event object at 0x7faee8ae1050>]
+status		 waits
+gen id		 1
+arrival		 58.35017167724409
+time to operate		 6.496743961188125
+
+TASK IS GOINT TO WAIT
+66.12152793647547
+status		 waits
+gen id		 1
+arrival		 58.35017167724409
+time to operate		 6.496743961188125
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1bd0>, <__main__.Event object at 0x7faee8ad6e90>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e10>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf190>]
+
+CUR TIME 68.12605060686204
+
+POPPED EVENT
+68.12605060686204
+len queue:  6
+[<__main__.Event object at 0x7faee8ad6e90>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e10>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf190>]
+status		 new
+gen id		 0
+arrival		 68.12605060686204
+time to operate		 5.874949211698729
+
+GENERATE NEW TASK
+69.77423911044546
+status		 new
+gen id		 0
+arrival		 69.77423911044546
+time to operate		 5.996690506416346
+len queue:  7
+[<__main__.Event object at 0x7faee8ad6e90>, <__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e10>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf190>]
+
+TASK IS GOINT TO WAIT
+68.12605060686204
+status		 waits
+gen id		 0
+arrival		 68.12605060686204
+time to operate		 5.874949211698729
+len queue:  8
+[<__main__.Event object at 0x7faee8ad6e90>, <__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e10>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf510>]
+
+CUR TIME 68.31490272417237
+
+POPPED EVENT
+68.31490272417237
+len queue:  7
+[<__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e10>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf510>]
+status		 new
+gen id		 1
+arrival		 68.31490272417237
+time to operate		 7.087760019403864
+
+GENERATE NEW TASK
+75.99801809227029
+status		 new
+gen id		 1
+arrival		 75.99801809227029
+time to operate		 7.1614309367185935
+len queue:  8
+[<__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e10>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8ad6c50>]
+
+TASK IS GOINT TO WAIT
+68.31490272417237
+status		 waits
+gen id		 1
+arrival		 68.31490272417237
+time to operate		 7.087760019403864
+len queue:  9
+[<__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e10>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8ad6c50>]
+
+CUR TIME 69.77423911044546
+
+POPPED EVENT
+69.77423911044546
+len queue:  8
+[<__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e10>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8ad6c50>]
+status		 new
+gen id		 0
+arrival		 69.77423911044546
+time to operate		 5.996690506416346
+
+GENERATE NEW TASK
+82.26920680673491
+status		 new
+gen id		 0
+arrival		 82.26920680673491
+time to operate		 6.011466546068185
+len queue:  9
+[<__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e10>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1b50>]
+
+TASK IS GOINT TO WAIT
+69.77423911044546
+status		 waits
+gen id		 0
+arrival		 69.77423911044546
+time to operate		 5.996690506416346
+len queue:  10
+[<__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e10>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8ae1490>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1b50>]
+
+CUR TIME 72.11542997273162
+
+POPPED EVENT
+72.11542997273162
+len queue:  9
+[<__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e10>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8ae1490>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1b50>]
+status		 done
+gen id		 0
+arrival		 39.38187164698286
+time to operate		 5.993902036256151
+await time		 26.739656289492615
+op id		 0
+
+POPPED TASK IS DONE
+72.11542997273162
+status		 done
+gen id		 0
+arrival		 39.38187164698286
+time to operate		 5.993902036256151
+await time		 26.739656289492615
+op id		 0
+
+CUR TIME 72.11542997273162
+
+POPPED EVENT
+72.11542997273162
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1e10>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8ae1490>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1b50>]
+status		 waits
+gen id		 0
+arrival		 40.208629128716005
+time to operate		 5.890699982344848
+
+TASK IS BEING PROCESSED
+78.00612995507646
+status		 done
+gen id		 0
+arrival		 40.208629128716005
+time to operate		 5.890699982344848
+await time		 31.906800844015613
+op id		 0
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1e10>, <__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8ae1490>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1b50>]
+
+CUR TIME 72.11542997273162
+
+POPPED EVENT
+72.11542997273162
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8ae1490>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1b50>]
+status		 waits
+gen id		 1
+arrival		 45.1135707075058
+time to operate		 9.047704845108264
+
+TASK IS GOINT TO WAIT
+72.11542997273162
+status		 waits
+gen id		 1
+arrival		 45.1135707075058
+time to operate		 9.047704845108264
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1050>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8ae1490>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1b50>]
+
+CUR TIME 72.11542997273162
+
+POPPED EVENT
+72.11542997273162
+len queue:  8
+[<__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8ae1490>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1b50>]
+status		 waits
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+
+TASK IS GOINT TO WAIT
+72.11542997273162
+status		 waits
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+len queue:  9
+[<__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8ae1490>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8ae1b50>]
+
+CUR TIME 72.11542997273162
+
+POPPED EVENT
+72.11542997273162
+len queue:  8
+[<__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8ae1490>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8ae1b50>]
+status		 waits
+gen id		 1
+arrival		 58.35017167724409
+time to operate		 6.496743961188125
+
+TASK IS GOINT TO WAIT
+72.11542997273162
+status		 waits
+gen id		 1
+arrival		 58.35017167724409
+time to operate		 6.496743961188125
+len queue:  9
+[<__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8ae1490>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf050>, <__main__.Event object at 0x7faee8ae1b50>]
+
+CUR TIME 72.11542997273162
+
+POPPED EVENT
+72.11542997273162
+len queue:  8
+[<__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8ae1490>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf050>, <__main__.Event object at 0x7faee8ae1b50>]
+status		 waits
+gen id		 0
+arrival		 68.12605060686204
+time to operate		 5.874949211698729
+
+TASK IS GOINT TO WAIT
+72.11542997273162
+status		 waits
+gen id		 0
+arrival		 68.12605060686204
+time to operate		 5.874949211698729
+len queue:  9
+[<__main__.Event object at 0x7faee8ad6e10>, <__main__.Event object at 0x7faee8ae1490>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf050>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8ae1b50>]
+
+CUR TIME 72.11542997273162
+
+POPPED EVENT
+72.11542997273162
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1490>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf050>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8ae1b50>]
+status		 waits
+gen id		 1
+arrival		 68.31490272417237
+time to operate		 7.087760019403864
+
+TASK IS GOINT TO WAIT
+72.11542997273162
+status		 waits
+gen id		 1
+arrival		 68.31490272417237
+time to operate		 7.087760019403864
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1490>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf050>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ae1b50>]
+
+CUR TIME 72.11542997273162
+
+POPPED EVENT
+72.11542997273162
+len queue:  8
+[<__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf050>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ae1b50>]
+status		 waits
+gen id		 0
+arrival		 69.77423911044546
+time to operate		 5.996690506416346
+
+TASK IS GOINT TO WAIT
+72.11542997273162
+status		 waits
+gen id		 0
+arrival		 69.77423911044546
+time to operate		 5.996690506416346
+len queue:  9
+[<__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf050>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ae1290>, <__main__.Event object at 0x7faee8ae1b50>]
+
+CUR TIME 75.99801809227029
+
+POPPED EVENT
+75.99801809227029
+len queue:  8
+[<__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf050>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ae1290>, <__main__.Event object at 0x7faee8ae1b50>]
+status		 new
+gen id		 1
+arrival		 75.99801809227029
+time to operate		 7.1614309367185935
+
+GENERATE NEW TASK
+87.42374484355373
+status		 new
+gen id		 1
+arrival		 87.42374484355373
+time to operate		 9.26208723150718
+len queue:  9
+[<__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf050>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ae1290>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1550>]
+
+TASK IS GOINT TO WAIT
+75.99801809227029
+status		 waits
+gen id		 1
+arrival		 75.99801809227029
+time to operate		 7.1614309367185935
+len queue:  10
+[<__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf050>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ae1290>, <__main__.Event object at 0x7faee8ae1810>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1550>]
+
+CUR TIME 78.00612995507646
+
+POPPED EVENT
+78.00612995507646
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf050>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ae1290>, <__main__.Event object at 0x7faee8ae1810>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1550>]
+status		 done
+gen id		 0
+arrival		 40.208629128716005
+time to operate		 5.890699982344848
+await time		 31.906800844015613
+op id		 0
+
+POPPED TASK IS DONE
+78.00612995507646
+status		 done
+gen id		 0
+arrival		 40.208629128716005
+time to operate		 5.890699982344848
+await time		 31.906800844015613
+op id		 0
+
+CUR TIME 78.00612995507646
+
+POPPED EVENT
+78.00612995507646
+len queue:  8
+[<__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf050>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ae1290>, <__main__.Event object at 0x7faee8ae1810>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1550>]
+status		 waits
+gen id		 1
+arrival		 45.1135707075058
+time to operate		 9.047704845108264
+
+TASK IS BEING PROCESSED
+87.05383480018472
+status		 done
+gen id		 1
+arrival		 45.1135707075058
+time to operate		 9.047704845108264
+await time		 32.89255924757066
+op id		 0
+len queue:  9
+[<__main__.Event object at 0x7faee8adf310>, <__main__.Event object at 0x7faee8adf050>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ae1290>, <__main__.Event object at 0x7faee8ae1810>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1550>]
+
+CUR TIME 78.00612995507646
+
+POPPED EVENT
+78.00612995507646
+len queue:  8
+[<__main__.Event object at 0x7faee8adf050>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ae1290>, <__main__.Event object at 0x7faee8ae1810>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1550>]
+status		 waits
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+
+TASK IS GOINT TO WAIT
+78.00612995507646
+status		 waits
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+len queue:  9
+[<__main__.Event object at 0x7faee8adf050>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ae1290>, <__main__.Event object at 0x7faee8ae1810>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae1550>]
+
+CUR TIME 78.00612995507646
+
+POPPED EVENT
+78.00612995507646
+len queue:  8
+[<__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ae1290>, <__main__.Event object at 0x7faee8ae1810>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8ae1550>]
+status		 waits
+gen id		 1
+arrival		 58.35017167724409
+time to operate		 6.496743961188125
+
+TASK IS GOINT TO WAIT
+78.00612995507646
+status		 waits
+gen id		 1
+arrival		 58.35017167724409
+time to operate		 6.496743961188125
+len queue:  9
+[<__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ae1290>, <__main__.Event object at 0x7faee8ae1810>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf090>, <__main__.Event object at 0x7faee8ae1550>]
+
+CUR TIME 78.00612995507646
+
+POPPED EVENT
+78.00612995507646
+len queue:  8
+[<__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ae1290>, <__main__.Event object at 0x7faee8ae1810>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf090>, <__main__.Event object at 0x7faee8ae1550>]
+status		 waits
+gen id		 0
+arrival		 68.12605060686204
+time to operate		 5.874949211698729
+
+TASK IS GOINT TO WAIT
+78.00612995507646
+status		 waits
+gen id		 0
+arrival		 68.12605060686204
+time to operate		 5.874949211698729
+len queue:  9
+[<__main__.Event object at 0x7faee8ad6c10>, <__main__.Event object at 0x7faee8ae1290>, <__main__.Event object at 0x7faee8ae1810>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf090>, <__main__.Event object at 0x7faee8ad6ed0>, <__main__.Event object at 0x7faee8ae1550>]
+
+CUR TIME 78.00612995507646
+
+POPPED EVENT
+78.00612995507646
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1290>, <__main__.Event object at 0x7faee8ae1810>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf090>, <__main__.Event object at 0x7faee8ad6ed0>, <__main__.Event object at 0x7faee8ae1550>]
+status		 waits
+gen id		 1
+arrival		 68.31490272417237
+time to operate		 7.087760019403864
+
+TASK IS GOINT TO WAIT
+78.00612995507646
+status		 waits
+gen id		 1
+arrival		 68.31490272417237
+time to operate		 7.087760019403864
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1290>, <__main__.Event object at 0x7faee8ae1810>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf090>, <__main__.Event object at 0x7faee8ad6ed0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1550>]
+
+CUR TIME 78.00612995507646
+
+POPPED EVENT
+78.00612995507646
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1810>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf090>, <__main__.Event object at 0x7faee8ad6ed0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1550>]
+status		 waits
+gen id		 0
+arrival		 69.77423911044546
+time to operate		 5.996690506416346
+
+TASK IS GOINT TO WAIT
+78.00612995507646
+status		 waits
+gen id		 0
+arrival		 69.77423911044546
+time to operate		 5.996690506416346
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1810>, <__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf090>, <__main__.Event object at 0x7faee8ad6ed0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1510>, <__main__.Event object at 0x7faee8ae1550>]
+
+CUR TIME 78.00612995507646
+
+POPPED EVENT
+78.00612995507646
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf090>, <__main__.Event object at 0x7faee8ad6ed0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1510>, <__main__.Event object at 0x7faee8ae1550>]
+status		 waits
+gen id		 1
+arrival		 75.99801809227029
+time to operate		 7.1614309367185935
+
+TASK IS GOINT TO WAIT
+78.00612995507646
+status		 waits
+gen id		 1
+arrival		 75.99801809227029
+time to operate		 7.1614309367185935
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1b50>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf090>, <__main__.Event object at 0x7faee8ad6ed0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1510>, <__main__.Event object at 0x7faee8ae1850>, <__main__.Event object at 0x7faee8ae1550>]
+
+CUR TIME 82.26920680673491
+
+POPPED EVENT
+82.26920680673491
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf090>, <__main__.Event object at 0x7faee8ad6ed0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1510>, <__main__.Event object at 0x7faee8ae1850>, <__main__.Event object at 0x7faee8ae1550>]
+status		 new
+gen id		 0
+arrival		 82.26920680673491
+time to operate		 6.011466546068185
+
+GENERATE NEW TASK
+87.58119774080019
+status		 new
+gen id		 0
+arrival		 87.58119774080019
+time to operate		 5.893485086584964
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf090>, <__main__.Event object at 0x7faee8ad6ed0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1510>, <__main__.Event object at 0x7faee8ae1850>, <__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>]
+
+TASK IS GOINT TO WAIT
+82.26920680673491
+status		 waits
+gen id		 0
+arrival		 82.26920680673491
+time to operate		 6.011466546068185
+len queue:  10
+[<__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf090>, <__main__.Event object at 0x7faee8ad6ed0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1510>, <__main__.Event object at 0x7faee8ae1850>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>]
+
+CUR TIME 87.05383480018472
+
+POPPED EVENT
+87.05383480018472
+len queue:  9
+[<__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf090>, <__main__.Event object at 0x7faee8ad6ed0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1510>, <__main__.Event object at 0x7faee8ae1850>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>]
+status		 done
+gen id		 1
+arrival		 45.1135707075058
+time to operate		 9.047704845108264
+await time		 32.89255924757066
+op id		 0
+
+POPPED TASK IS DONE
+87.05383480018472
+status		 done
+gen id		 1
+arrival		 45.1135707075058
+time to operate		 9.047704845108264
+await time		 32.89255924757066
+op id		 0
+
+CUR TIME 87.05383480018472
+
+POPPED EVENT
+87.05383480018472
+len queue:  8
+[<__main__.Event object at 0x7faee8adf090>, <__main__.Event object at 0x7faee8ad6ed0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1510>, <__main__.Event object at 0x7faee8ae1850>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>]
+status		 waits
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+
+TASK IS BEING PROCESSED
+93.05015792369754
+status		 done
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+await time		 35.33198681717435
+op id		 0
+len queue:  9
+[<__main__.Event object at 0x7faee8adf090>, <__main__.Event object at 0x7faee8ad6ed0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1510>, <__main__.Event object at 0x7faee8ae1850>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>]
+
+CUR TIME 87.05383480018472
+
+POPPED EVENT
+87.05383480018472
+len queue:  8
+[<__main__.Event object at 0x7faee8ad6ed0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1510>, <__main__.Event object at 0x7faee8ae1850>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>]
+status		 waits
+gen id		 1
+arrival		 58.35017167724409
+time to operate		 6.496743961188125
+
+TASK IS GOINT TO WAIT
+87.05383480018472
+status		 waits
+gen id		 1
+arrival		 58.35017167724409
+time to operate		 6.496743961188125
+len queue:  9
+[<__main__.Event object at 0x7faee8ad6ed0>, <__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1510>, <__main__.Event object at 0x7faee8ae1850>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf190>]
+
+CUR TIME 87.05383480018472
+
+POPPED EVENT
+87.05383480018472
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1510>, <__main__.Event object at 0x7faee8ae1850>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf190>]
+status		 waits
+gen id		 0
+arrival		 68.12605060686204
+time to operate		 5.874949211698729
+
+TASK IS GOINT TO WAIT
+87.05383480018472
+status		 waits
+gen id		 0
+arrival		 68.12605060686204
+time to operate		 5.874949211698729
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1650>, <__main__.Event object at 0x7faee8ae1510>, <__main__.Event object at 0x7faee8ae1850>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6fd0>]
+
+CUR TIME 87.05383480018472
+
+POPPED EVENT
+87.05383480018472
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1510>, <__main__.Event object at 0x7faee8ae1850>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6fd0>]
+status		 waits
+gen id		 1
+arrival		 68.31490272417237
+time to operate		 7.087760019403864
+
+TASK IS GOINT TO WAIT
+87.05383480018472
+status		 waits
+gen id		 1
+arrival		 68.31490272417237
+time to operate		 7.087760019403864
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1510>, <__main__.Event object at 0x7faee8ae1850>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8ae1110>]
+
+CUR TIME 87.05383480018472
+
+POPPED EVENT
+87.05383480018472
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1850>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8ae1110>]
+status		 waits
+gen id		 0
+arrival		 69.77423911044546
+time to operate		 5.996690506416346
+
+TASK IS GOINT TO WAIT
+87.05383480018472
+status		 waits
+gen id		 0
+arrival		 69.77423911044546
+time to operate		 5.996690506416346
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1850>, <__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>]
+
+CUR TIME 87.05383480018472
+
+POPPED EVENT
+87.05383480018472
+len queue:  8
+[<__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>]
+status		 waits
+gen id		 1
+arrival		 75.99801809227029
+time to operate		 7.1614309367185935
+
+TASK IS GOINT TO WAIT
+87.05383480018472
+status		 waits
+gen id		 1
+arrival		 75.99801809227029
+time to operate		 7.1614309367185935
+len queue:  9
+[<__main__.Event object at 0x7faee8ae19d0>, <__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>]
+
+CUR TIME 87.05383480018472
+
+POPPED EVENT
+87.05383480018472
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>]
+status		 waits
+gen id		 0
+arrival		 82.26920680673491
+time to operate		 6.011466546068185
+
+TASK IS GOINT TO WAIT
+87.05383480018472
+status		 waits
+gen id		 0
+arrival		 82.26920680673491
+time to operate		 6.011466546068185
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1550>, <__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8ae1e90>]
+
+CUR TIME 87.42374484355373
+
+POPPED EVENT
+87.42374484355373
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8ae1e90>]
+status		 new
+gen id		 1
+arrival		 87.42374484355373
+time to operate		 9.26208723150718
+
+GENERATE NEW TASK
+96.76124102610265
+status		 new
+gen id		 1
+arrival		 96.76124102610265
+time to operate		 9.236814055484976
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8ae1e90>, <__main__.Event object at 0x7faee8ae1090>]
+
+TASK IS GOINT TO WAIT
+87.42374484355373
+status		 waits
+gen id		 1
+arrival		 87.42374484355373
+time to operate		 9.26208723150718
+len queue:  10
+[<__main__.Event object at 0x7faee8ae1d50>, <__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8ae1e90>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1090>]
+
+CUR TIME 87.58119774080019
+
+POPPED EVENT
+87.58119774080019
+len queue:  9
+[<__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8ae1e90>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8ae1090>]
+status		 new
+gen id		 0
+arrival		 87.58119774080019
+time to operate		 5.893485086584964
+
+TASK IS GOINT TO WAIT
+87.58119774080019
+status		 waits
+gen id		 0
+arrival		 87.58119774080019
+time to operate		 5.893485086584964
+len queue:  10
+[<__main__.Event object at 0x7faee8adf810>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8ae1e90>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ae1090>]
+
+CUR TIME 93.05015792369754
+
+POPPED EVENT
+93.05015792369754
+len queue:  9
+[<__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8ae1e90>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ae1090>]
+status		 done
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+await time		 35.33198681717435
+op id		 0
+
+POPPED TASK IS DONE
+93.05015792369754
+status		 done
+gen id		 0
+arrival		 51.72184798301037
+time to operate		 5.996323123512828
+await time		 35.33198681717435
+op id		 0
+
+CUR TIME 93.05015792369754
+
+POPPED EVENT
+93.05015792369754
+len queue:  8
+[<__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8ae1e90>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ae1090>]
+status		 waits
+gen id		 1
+arrival		 58.35017167724409
+time to operate		 6.496743961188125
+
+TASK IS BEING PROCESSED
+99.54690188488567
+status		 done
+gen id		 1
+arrival		 58.35017167724409
+time to operate		 6.496743961188125
+await time		 34.69998624645345
+op id		 0
+len queue:  9
+[<__main__.Event object at 0x7faee8ad6fd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8ae1e90>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8adf190>]
+
+CUR TIME 93.05015792369754
+
+POPPED EVENT
+93.05015792369754
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8ae1e90>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8adf190>]
+status		 waits
+gen id		 0
+arrival		 68.12605060686204
+time to operate		 5.874949211698729
+
+TASK IS GOINT TO WAIT
+93.05015792369754
+status		 waits
+gen id		 0
+arrival		 68.12605060686204
+time to operate		 5.874949211698729
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8ae1e90>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ae1dd0>]
+
+CUR TIME 93.05015792369754
+
+POPPED EVENT
+93.05015792369754
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8ae1e90>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ae1dd0>]
+status		 waits
+gen id		 1
+arrival		 68.31490272417237
+time to operate		 7.087760019403864
+
+TASK IS GOINT TO WAIT
+93.05015792369754
+status		 waits
+gen id		 1
+arrival		 68.31490272417237
+time to operate		 7.087760019403864
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8ae1e90>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1a10>]
+
+CUR TIME 93.05015792369754
+
+POPPED EVENT
+93.05015792369754
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8ae1e90>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1a10>]
+status		 waits
+gen id		 0
+arrival		 69.77423911044546
+time to operate		 5.996690506416346
+
+TASK IS GOINT TO WAIT
+93.05015792369754
+status		 waits
+gen id		 0
+arrival		 69.77423911044546
+time to operate		 5.996690506416346
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8ae1e90>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1a10>, <__main__.Event object at 0x7faee8ae1ed0>]
+
+CUR TIME 93.05015792369754
+
+POPPED EVENT
+93.05015792369754
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1e90>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1a10>, <__main__.Event object at 0x7faee8ae1ed0>]
+status		 waits
+gen id		 1
+arrival		 75.99801809227029
+time to operate		 7.1614309367185935
+
+TASK IS GOINT TO WAIT
+93.05015792369754
+status		 waits
+gen id		 1
+arrival		 75.99801809227029
+time to operate		 7.1614309367185935
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1e90>, <__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1a10>, <__main__.Event object at 0x7faee8ae1ed0>, <__main__.Event object at 0x7faee8ae1410>]
+
+CUR TIME 93.05015792369754
+
+POPPED EVENT
+93.05015792369754
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1a10>, <__main__.Event object at 0x7faee8ae1ed0>, <__main__.Event object at 0x7faee8ae1410>]
+status		 waits
+gen id		 0
+arrival		 82.26920680673491
+time to operate		 6.011466546068185
+
+TASK IS GOINT TO WAIT
+93.05015792369754
+status		 waits
+gen id		 0
+arrival		 82.26920680673491
+time to operate		 6.011466546068185
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1e50>, <__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1a10>, <__main__.Event object at 0x7faee8ae1ed0>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8adf410>]
+
+CUR TIME 93.05015792369754
+
+POPPED EVENT
+93.05015792369754
+len queue:  8
+[<__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1a10>, <__main__.Event object at 0x7faee8ae1ed0>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8adf410>]
+status		 waits
+gen id		 1
+arrival		 87.42374484355373
+time to operate		 9.26208723150718
+
+TASK IS GOINT TO WAIT
+93.05015792369754
+status		 waits
+gen id		 1
+arrival		 87.42374484355373
+time to operate		 9.26208723150718
+len queue:  9
+[<__main__.Event object at 0x7faee8adf490>, <__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1a10>, <__main__.Event object at 0x7faee8ae1ed0>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8adf110>]
+
+CUR TIME 93.05015792369754
+
+POPPED EVENT
+93.05015792369754
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1a10>, <__main__.Event object at 0x7faee8ae1ed0>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8adf110>]
+status		 waits
+gen id		 0
+arrival		 87.58119774080019
+time to operate		 5.893485086584964
+
+TASK IS GOINT TO WAIT
+93.05015792369754
+status		 waits
+gen id		 0
+arrival		 87.58119774080019
+time to operate		 5.893485086584964
+len queue:  9
+[<__main__.Event object at 0x7faee8ae1090>, <__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1a10>, <__main__.Event object at 0x7faee8ae1ed0>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8adf110>, <__main__.Event object at 0x7faee8adf590>]
+
+CUR TIME 96.76124102610265
+
+POPPED EVENT
+96.76124102610265
+len queue:  8
+[<__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1a10>, <__main__.Event object at 0x7faee8ae1ed0>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8adf110>, <__main__.Event object at 0x7faee8adf590>]
+status		 new
+gen id		 1
+arrival		 96.76124102610265
+time to operate		 9.236814055484976
+
+TASK IS GOINT TO WAIT
+96.76124102610265
+status		 waits
+gen id		 1
+arrival		 96.76124102610265
+time to operate		 9.236814055484976
+len queue:  9
+[<__main__.Event object at 0x7faee8adf190>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1a10>, <__main__.Event object at 0x7faee8ae1ed0>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8adf110>, <__main__.Event object at 0x7faee8adf590>, <__main__.Event object at 0x7faee8ad6c50>]
+
+CUR TIME 99.54690188488567
+
+POPPED EVENT
+99.54690188488567
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1a10>, <__main__.Event object at 0x7faee8ae1ed0>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8adf110>, <__main__.Event object at 0x7faee8adf590>, <__main__.Event object at 0x7faee8ad6c50>]
+status		 done
+gen id		 1
+arrival		 58.35017167724409
+time to operate		 6.496743961188125
+await time		 34.69998624645345
+op id		 0
+
+POPPED TASK IS DONE
+99.54690188488567
+status		 done
+gen id		 1
+arrival		 58.35017167724409
+time to operate		 6.496743961188125
+await time		 34.69998624645345
+op id		 0
+
+CUR TIME 99.54690188488567
+
+POPPED EVENT
+99.54690188488567
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1a10>, <__main__.Event object at 0x7faee8ae1ed0>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8adf110>, <__main__.Event object at 0x7faee8adf590>, <__main__.Event object at 0x7faee8ad6c50>]
+status		 waits
+gen id		 0
+arrival		 68.12605060686204
+time to operate		 5.874949211698729
+
+TASK IS BEING PROCESSED
+105.4218510965844
+status		 done
+gen id		 0
+arrival		 68.12605060686204
+time to operate		 5.874949211698729
+await time		 31.420851278023633
+op id		 0
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1a10>, <__main__.Event object at 0x7faee8ae1ed0>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8adf110>, <__main__.Event object at 0x7faee8adf590>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1dd0>]
+
+CUR TIME 99.54690188488567
+
+POPPED EVENT
+99.54690188488567
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1ed0>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8adf110>, <__main__.Event object at 0x7faee8adf590>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1dd0>]
+status		 waits
+gen id		 1
+arrival		 68.31490272417237
+time to operate		 7.087760019403864
+
+TASK IS GOINT TO WAIT
+99.54690188488567
+status		 waits
+gen id		 1
+arrival		 68.31490272417237
+time to operate		 7.087760019403864
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1ed0>, <__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8adf110>, <__main__.Event object at 0x7faee8adf590>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1110>]
+
+CUR TIME 99.54690188488567
+
+POPPED EVENT
+99.54690188488567
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8adf110>, <__main__.Event object at 0x7faee8adf590>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1110>]
+status		 waits
+gen id		 0
+arrival		 69.77423911044546
+time to operate		 5.996690506416346
+
+TASK IS GOINT TO WAIT
+99.54690188488567
+status		 waits
+gen id		 0
+arrival		 69.77423911044546
+time to operate		 5.996690506416346
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1410>, <__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8adf110>, <__main__.Event object at 0x7faee8adf590>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>]
+
+CUR TIME 99.54690188488567
+
+POPPED EVENT
+99.54690188488567
+len queue:  7
+[<__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8adf110>, <__main__.Event object at 0x7faee8adf590>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>]
+status		 waits
+gen id		 1
+arrival		 75.99801809227029
+time to operate		 7.1614309367185935
+
+TASK IS GOINT TO WAIT
+99.54690188488567
+status		 waits
+gen id		 1
+arrival		 75.99801809227029
+time to operate		 7.1614309367185935
+len queue:  8
+[<__main__.Event object at 0x7faee8adf410>, <__main__.Event object at 0x7faee8adf110>, <__main__.Event object at 0x7faee8adf590>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>]
+
+CUR TIME 99.54690188488567
+
+POPPED EVENT
+99.54690188488567
+len queue:  7
+[<__main__.Event object at 0x7faee8adf110>, <__main__.Event object at 0x7faee8adf590>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>]
+status		 waits
+gen id		 0
+arrival		 82.26920680673491
+time to operate		 6.011466546068185
+
+TASK IS GOINT TO WAIT
+99.54690188488567
+status		 waits
+gen id		 0
+arrival		 82.26920680673491
+time to operate		 6.011466546068185
+len queue:  8
+[<__main__.Event object at 0x7faee8adf110>, <__main__.Event object at 0x7faee8adf590>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8adf510>]
+
+CUR TIME 99.54690188488567
+
+POPPED EVENT
+99.54690188488567
+len queue:  7
+[<__main__.Event object at 0x7faee8adf590>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8adf510>]
+status		 waits
+gen id		 1
+arrival		 87.42374484355373
+time to operate		 9.26208723150718
+
+TASK IS GOINT TO WAIT
+99.54690188488567
+status		 waits
+gen id		 1
+arrival		 87.42374484355373
+time to operate		 9.26208723150718
+len queue:  8
+[<__main__.Event object at 0x7faee8adf590>, <__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8adf1d0>]
+
+CUR TIME 99.54690188488567
+
+POPPED EVENT
+99.54690188488567
+len queue:  7
+[<__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8adf1d0>]
+status		 waits
+gen id		 0
+arrival		 87.58119774080019
+time to operate		 5.893485086584964
+
+TASK IS GOINT TO WAIT
+99.54690188488567
+status		 waits
+gen id		 0
+arrival		 87.58119774080019
+time to operate		 5.893485086584964
+len queue:  8
+[<__main__.Event object at 0x7faee8ad6c50>, <__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8adf1d0>, <__main__.Event object at 0x7faee8ad6f50>]
+
+CUR TIME 99.54690188488567
+
+POPPED EVENT
+99.54690188488567
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8adf1d0>, <__main__.Event object at 0x7faee8ad6f50>]
+status		 waits
+gen id		 1
+arrival		 96.76124102610265
+time to operate		 9.236814055484976
+
+TASK IS GOINT TO WAIT
+99.54690188488567
+status		 waits
+gen id		 1
+arrival		 96.76124102610265
+time to operate		 9.236814055484976
+len queue:  8
+[<__main__.Event object at 0x7faee8ae1dd0>, <__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8adf1d0>, <__main__.Event object at 0x7faee8ad6f50>, <__main__.Event object at 0x7faee8ae1090>]
+
+POPPING DONE TASKS AFTER MODEL TIME
+len queue:  7
+[<__main__.Event object at 0x7faee8ae1110>, <__main__.Event object at 0x7faee8ae1390>, <__main__.Event object at 0x7faee8ae1910>, <__main__.Event object at 0x7faee8adf510>, <__main__.Event object at 0x7faee8adf1d0>, <__main__.Event object at 0x7faee8ad6f50>, <__main__.Event object at 0x7faee8ae1090>]
+7
+False
+105.4218510965844
+status		 waits
+gen id		 1
+arrival		 68.31490272417237
+time to operate		 7.087760019403864
+105.4218510965844
+status		 waits
+gen id		 0
+arrival		 69.77423911044546
+time to operate		 5.996690506416346
+105.4218510965844
+status		 waits
+gen id		 1
+arrival		 75.99801809227029
+time to operate		 7.1614309367185935
+105.4218510965844
+status		 waits
+gen id		 0
+arrival		 82.26920680673491
+time to operate		 6.011466546068185
+105.4218510965844
+status		 waits
+gen id		 1
+arrival		 87.42374484355373
+time to operate		 9.26208723150718
+105.4218510965844
+status		 waits
+gen id		 0
+arrival		 87.58119774080019
+time to operate		 5.893485086584964
+105.4218510965844
+status		 waits
+gen id		 1
+arrival		 96.76124102610265
+time to operate		 9.236814055484976
+avg 0 :  -1
+-1.0

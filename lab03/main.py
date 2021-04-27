@@ -459,8 +459,9 @@ class DFE:
 		self.allkoefs = [self.koefs[0], self.koefs[1], self.koefs[2], self.koefs[3], self.koefs[4], 0, self.koefs[5]/2, 0, self.koefs[6]/2, 0, self.koefs[7]/2, self.koefs[7]/2, 0, self.koefs[6]/2, self.koefs[5]/2, 0]
 
 		factor_indexes = [i for i in range (self.number_of_factors)]
-		index = 0
+		index = 1
 		print()
+		print ("a 0", "\t", self.allkoefs[0])
 		for i in range (1, self.number_of_factors + 1):
 			for j in combinations(factor_indexes, i):
 				print ("a", "".join(map(str,map(increment, j))), "\t", self.allkoefs[index])

@@ -45,8 +45,8 @@ class GeneraterThread(threading.Thread):
 			operatetime = random.uniform(self.a, self.b)
 			newtask = Task(cur_time, operatetime, self.id)
 			queue.append(newtask)
-			logging.debug('NEW ' + str(cur_time) + ' : ' + str(len(queue)) + ' items in queue')
-			newtask.print()
+			# logging.debug('NEW ' + str(cur_time) + ' : ' + str(len(queue)) + ' items in queue')
+			# newtask.print()
 			arrivetimes = numpy.random.rayleigh(self.sigma, 1)
 			sleep_time =  arrivetimes[0]
 			time.sleep(sleep_time)
@@ -68,11 +68,11 @@ class OperatorThread(threading.Thread):
 		while (cur_time < self.stop_time):
 			if (len(queue) > 0):
 				task = queue.pop(0)
-				logging.debug('POP ' + str(len(queue)) + ' items left in queue')
+				# logging.debug('POP ' + str(len(queue)) + ' items left in queue')
 				if (cur_time < task.arrival_time):
 					cur_time = task.arrival_time
 				task.process(cur_time, self.id)
-				task.print()
+				# task.print()
 				time.sleep(task.process_time)
 				cur_time += task.process_time
 				number_of_process_tasks += 1
@@ -81,15 +81,48 @@ class OperatorThread(threading.Thread):
 		res.append(avg_await_time)
 
 if __name__ == '__main__':
-	gen1 = GeneraterThread(name='generater', sigma = 4, a = 1, b = 3, id = 0, start_time = 0, stop_time = 5)
-	gen2 = GeneraterThread(name='generater', sigma = 2, a = 2, b = 3, id = 1, start_time = 0, stop_time = 5)
-	op = OperatorThread(name='operator', start_time = 0, stop_time = 5)
 
-	gen1.start()
-	gen2.start()
-	op.start()
+	print("loadness,", "x1,", "x2,", "x3,", "x4,", "x5,", "x6,", "sigma1,", "a1,", "b1,", "sigma2,", "a2,", "b2", "avg_await_time")
+	start_time = 0
+	stop_time = 5
+	times = 5
 
-	gen1.join()
-	gen2.join()
-	op.join()
-	print(res)
+	# gen1 avg [1-8]; intensity = [0.125, 1]
+	x1 = 0.125
+	while x1 < 1:
+		x2 = 0.5
+		x3 = 0.1
+		x4 = 0.125
+		x5 = 0.5
+		x6 = 0.1
+		ro = (x1 + x4) / (x2 + x5)
+		sigma1 =  1 / x1 * math.sqrt(2 / math.pi)
+		a1 = 1/x2 - x3 * math.sqrt(3)
+		b1 = 1/x2 + x3 * math.sqrt(3)
+		sigma2 =  1 / x4 * math.sqrt(2 / math.pi)
+		a2 = 1/x5 - x6 * math.sqrt(3)
+		b2 = 1/x5 + x6 * math.sqrt(3)
+		print(ro, ",", x1, ",", x2, ",", x3, ",", x4, ",", x5, ",", x6, ",", sigma1, ",", a1, ",", b1, ",", sigma2, ",", a2, ",", b2, ",", end="")
+
+		avg_wait_time = 0
+		for i in range(times):
+			gen1 = GeneraterThread(name='generater', sigma = sigma1, a = a1, b = b1, id = 0, start_time = start_time, stop_time = stop_time)
+			gen2 = GeneraterThread(name='generater', sigma = sigma2, a = a2, b = b2, id = 1, start_time = start_time, stop_time = stop_time)
+			op = OperatorThread(name='operator', start_time = start_time, stop_time = stop_time)
+
+			gen1.start()
+			gen2.start()
+			op.start()
+
+			gen1.join()
+			gen2.join()
+			op.join()
+			avg_wait_time += res[0]
+			print(res[0])
+			res = []
+			queue = []
+		avg_wait_time /= times
+		print(avg_wait_time)
+		x1 += 0.1
+
+
