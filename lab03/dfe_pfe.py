@@ -426,6 +426,69 @@ class DFE:
 			i += 1
 		print(pt)
 
+def getdotbyprop(pfe, dfe):
+	x1_min = pfe.factors[0][0]
+	x1_max = pfe.factors[0][1]
+	x2_min = pfe.factors[1][0]
+	x2_max = pfe.factors[1][1]
+	x3_min = pfe.factors[2][0]
+	x3_max = pfe.factors[2][1]
+	x4_min = pfe.factors[3][0]
+	x4_max = pfe.factors[3][1]
+	x5_min = pfe.factors[4][0]
+	x5_max = pfe.factors[4][1]
+	x6_min = pfe.factors[5][0]
+	x6_max = pfe.factors[5][1]
+
+	x1_prop = float(input("Введите кодированное значение интенсивности генератора 1: "))
+	x2_prop = float(input("Введите кодированное значение интенсивность обработки заявки 1 типа: "))
+	x3_prop = float(input("Введите кодированное значение среднеквадратического отклонение обработки заявки 1 типа : "))
+	x4_prop = float(input("Введите кодированное значение интенсивности генератора 2: "))
+	x5_prop = float(input("Введите кодированное значение интенсивность обработки заявки 2 типа: "))
+	x6_prop = float(input("Введите кодированное значение среднеквадратического отклонение обработки заявки 2 типа : "))
+
+	assert(-1 <= x1_prop <= 1)
+	assert(-1 <= x2_prop <= 1)
+	assert(-1 <= x3_prop <= 1)
+	assert(-1 <= x4_prop <= 1)
+	assert(-1 <= x5_prop <= 1)
+	assert(-1 <= x6_prop <= 1)
+
+	x1 = get_value(x1_min, x1_max, x1_prop)
+	x2 = get_value(x2_min, x2_max, x2_prop)
+	x3 = get_value(x3_min, x3_max, x3_prop)
+	x4 = get_value(x4_min, x4_max, x4_prop)
+	x5 = get_value(x5_min, x5_max, x5_prop)
+	x6 = get_value(x6_min, x6_max, x6_prop)
+
+	sigma1 =  1 / x1 * math.sqrt(2 / math.pi)
+	a1 = 1/x2 - x3 * math.sqrt(3)
+	b1 = 1/x2 + x3 * math.sqrt(3)
+	sigma2 =  1 / x4 * math.sqrt(2 / math.pi)
+	a2 = 1/x5 - x6 * math.sqrt(3)
+	b2 = 1/x5 + x6 * math.sqrt(3)
+
+	model = Model(0, 100, [[sigma1, a1, b1], [sigma2, a2, b2]], 1)
+	y_avg = model.calculate(5)
+	y_linear = pfe.calculate_linear([x1, x2, x3, x4, x5, x6])
+	y_nonlinear = pfe.calculate_partly_nonlinear([x1, x2, x3, x4, x5, x6])
+
+	y_linear_d = dfe.calculate_linear([x1, x2, x3, x4, x5, x6])
+	y_nonlinear_d = dfe.calculate_partly_nonlinear([x1, x2, x3, x4, x5, x6])
+
+	print("-------------------------------------------------------------------")
+	print("Значение y полученное экспериментально:\t\t", y_avg)
+	print()
+	print("Расчитанное значение y (линейное) по ПФЭ:\t\t", y_linear)
+	print("Разница (линейное) по ПФЭ:\t\t\t\t", y_avg - y_linear)
+	print("Расчитанное значение y (частично-нелинейное) по ПФЭ:\t", y_nonlinear)
+	print("Разница (частично-нелинейное) по ПФЭ:\t\t\t", y_avg - y_nonlinear)
+	print()
+	print("Расчитанное значение y (линейное) по ДФЭ:\t\t", y_linear_d)
+	print("Разница (линейное) по ДФЭ:\t\t\t\t", y_avg - y_linear_d)
+	print("Расчитанное значение y (частично-нелинейное) по ДФЭ:\t", y_nonlinear_d)
+	print("Разница (частично-нелинейное) по ДФЭ:\t\t\t", y_avg - y_nonlinear_d)
+
 if __name__ == "__main__":
 	x1_min = 0.1
 	x1_max = 0.2
@@ -456,10 +519,18 @@ if __name__ == "__main__":
 	pfe.printtable()
 	pfe.check_adequacy()
 
-	# print ("DFE")
-	# dfe = DFE(min_max_factors, times, 2)
-	# dfe.fill_experiment_data()
-	# dfe.printtable()
-	# dfe.fill_calculated_data()
-	# dfe.printtable()
-	# dfe.check_adequacy()
+	print ("DFE")
+	dfe = DFE(min_max_factors, times, 2)
+	dfe.fill_experiment_data()
+	dfe.printtable()
+	dfe.fill_calculated_data()
+	dfe.printtable()
+	dfe.check_adequacy()
+
+	getdotflag = True
+	while (getdotflag):
+		flag = input('Ввести координаты из факторного пространства (ДA/нет)? ')
+		if (flag == '' or flag.lower() == 'да'):
+			getdotbyprop(pfe, dfe)
+		elif (flag.lower() == 'нет'):
+			getdotflag = False

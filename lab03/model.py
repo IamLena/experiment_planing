@@ -197,15 +197,15 @@ class Model:
 			ok_flag = False
 			if (len(self.queue) == 1 and self.operators[0].busy == False):
 				ok_flag = True
-			# if (log):
-			print("len queue: ", len(self.queue))
-			print(self.queue)
-			if (len(self.queue) > 0):
-				print(len(self.queue))
-				print(self.operators[0].busy)
-				for i in range(len(self.queue)):
-					print(self.queue[i].time)
-					self.queue[i].task.info()
+			if (log):
+				print("len queue: ", len(self.queue))
+				print(self.queue)
+				if (len(self.queue) > 0):
+					print(len(self.queue))
+					print(self.operators[0].busy)
+					for i in range(len(self.queue)):
+						print(self.queue[i].time)
+						self.queue[i].task.info()
 			if (self.count != 0 and (len(self.queue) == 0 or ok_flag)):
 				self.avg_waiting_time /= self.count
 			else:
