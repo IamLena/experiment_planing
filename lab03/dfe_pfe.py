@@ -79,7 +79,7 @@ class PFE:
 			a2 = 1/self.real_table[experiment][4] - self.real_table[experiment][5] * math.sqrt(3)
 			b2 = 1/self.real_table[experiment][4] + self.real_table[experiment][5] * math.sqrt(3)
 
-			model = Model(0,20, [[sigma1, a1, b1], [sigma2, a2, b2]], 1)
+			model = Model(0, 100, [[sigma1, a1, b1], [sigma2, a2, b2]], 1)
 			y_ex_values = model.array_calculate(self.times)
 			y_ex_avg = sum(y_ex_values) / len (y_ex_values)
 			self.real_table[experiment].append(y_ex_avg)
@@ -277,7 +277,7 @@ class DFE:
 			a2 = 1/self.real_table[experiment][4] - self.real_table[experiment][5] * math.sqrt(3)
 			b2 = 1/self.real_table[experiment][4] + self.real_table[experiment][5] * math.sqrt(3)
 
-			model = Model(0,20, [[sigma1, a1, b1], [sigma2, a2, b2]], 1)
+			model = Model(0, 100, [[sigma1, a1, b1], [sigma2, a2, b2]], 1)
 			y_ex_values = model.array_calculate(self.times)
 			y_ex_avg = sum(y_ex_values) / len (y_ex_values)
 			self.real_table[experiment].append(y_ex_avg)
@@ -428,38 +428,38 @@ class DFE:
 
 if __name__ == "__main__":
 	x1_min = 0.1
-	x1_max = 0.156
+	x1_max = 0.2
 
-	x2_min = 0.17
-	x2_max = 0.5
+	x2_min = 0.6
+	x2_max = 0.8
 
-	x3_min = 0.1
-	x3_max = 0.5
+	x3_min = 0.03
+	x3_max = 0.1
 
-	x4_min = 0.08
-	x4_max = 0.1
+	x4_min = 0.125
+	x4_max = 0.4
 
-	x5_min = 0.125
-	x5_max = 0.25
+	x5_min = 0.9
+	x5_max = 1.1
 
-	x6_min = 1
-	x6_max = 0.5
+	x6_min = 0.05
+	x6_max = 0.15
 
 	times = 5
 	min_max_factors = [[x1_min, x1_max], [x2_min, x2_max], [x3_min, x3_max], [x4_min, x4_max], [x5_min, x5_max], [x6_min, x6_max]]
 
-	# print ("PFE")
-	# pfe = PFE(min_max_factors, times)
-	# pfe.fill_experiment_data()
-	# pfe.printtable()
-	# pfe.fill_calculated_data()
-	# pfe.printtable()
-	# pfe.check_adequacy()
+	print ("PFE")
+	pfe = PFE(min_max_factors, times)
+	pfe.fill_experiment_data()
+	pfe.printtable()
+	pfe.fill_calculated_data()
+	pfe.printtable()
+	pfe.check_adequacy()
 
-	print ("DFE")
-	dfe = DFE(min_max_factors, times, 2)
-	dfe.fill_experiment_data()
-	dfe.printtable()
-	dfe.fill_calculated_data()
-	dfe.printtable()
-	dfe.check_adequacy()
+	# print ("DFE")
+	# dfe = DFE(min_max_factors, times, 2)
+	# dfe.fill_experiment_data()
+	# dfe.printtable()
+	# dfe.fill_calculated_data()
+	# dfe.printtable()
+	# dfe.check_adequacy()

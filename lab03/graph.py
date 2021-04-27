@@ -9,18 +9,18 @@ def getGraph():
 	times = 5
 
 	x1 = 0.1
-	while x1 < 5:
-		x2 = 0.1
-		while x2 < 5:
+	while x1 <= 0.156:
+		x2 = 0.17
+		while x2 <= 0.5:
 			x3 = 0.1
-			while x3 < 5:
-				x4 = 0.1
-				while x4 < 5:
-					x5 = 0.1
-					while x5 < 5:
-						x6 = 0.1
-						while x6 < 5:
-							ro = (x1 + x4) / (x2 + x5)
+			while x3 <= 0.5:
+				x4 = 0.08
+				while x4 <= 0.1:
+					x5 = 0.125
+					while x5 <= 0.25:
+						x6 = 0.5
+						while x6 <= 1:
+							ro = (x1 + x4) / ((x2 + x5) / 2)
 							sigma1 =  1 / x1 * math.sqrt(2 / math.pi)
 							a1 = 1/x2 - x3 * math.sqrt(3)
 							b1 = 1/x2 + x3 * math.sqrt(3)
@@ -39,11 +39,11 @@ def getGraph():
 										avg_wait_time = m.calculate(times)
 									if (avg_wait_time >= 0):
 										print(ro, ",", x1, ",", x2, ",", x3, ",", x4, ",", x5, ",", x6, ",", sigma1, ",", a1, ",", b1, ",", sigma2, ",", a2, ",", b2, ",", avg_wait_time)
-							x6 += 0.5
-						x5 += 0.5
-					x4 += 0.5
-				x3 += 0.5
-			x2 += 0.5
-		x1 += 0.5
+							x6 += 0.1
+						x5 += 0.01
+					x4 += 0.005
+				x3 += 0.1
+			x2 += 0.05
+		x1 += 0.01
 
 getGraph()

@@ -197,15 +197,15 @@ class Model:
 			ok_flag = False
 			if (len(self.queue) == 1 and self.operators[0].busy == False):
 				ok_flag = True
-			if (log):
-				print("len queue: ", len(self.queue))
-				print(self.queue)
-				if (len(self.queue) > 0):
-					print(len(self.queue))
-					print(self.operators[0].busy)
-					for i in range(len(self.queue)):
-						print(self.queue[i].time)
-						self.queue[i].task.info()
+			# if (log):
+			print("len queue: ", len(self.queue))
+			print(self.queue)
+			if (len(self.queue) > 0):
+				print(len(self.queue))
+				print(self.operators[0].busy)
+				for i in range(len(self.queue)):
+					print(self.queue[i].time)
+					self.queue[i].task.info()
 			if (self.count != 0 and (len(self.queue) == 0 or ok_flag)):
 				self.avg_waiting_time /= self.count
 			else:
@@ -324,29 +324,29 @@ class Model:
 			self.reset()
 		return avg
 
-x1 = 0.1
-x2 = 0.17
-x3 = 0.1
-x4 = 0.08
-x5 = 0.125
-x6 = 1
-print(x1, x2, x3, x4, x5, x6)
+# x1 = 0.1
+# x2 = 0.5
+# x3 = 0.1
+# x4 = 0.125
+# x5 = 0.9
+# x6 = 0.05
+# print(x1, x2, x3, x4, x5, x6)
 
-sigma1 =  1 / x1 * math.sqrt(2 / math.pi)
-a1 = 1/x2 - x3 * math.sqrt(3)
-b1 = 1/x2 + x3 * math.sqrt(3)
-sigma2 =  1 / x4 * math.sqrt(2 / math.pi)
-a2 = 1/x5 - x6 * math.sqrt(3)
-b2 = 1/x5 + x6 * math.sqrt(3)
+# sigma1 =  1 / x1 * math.sqrt(2 / math.pi)
+# a1 = 1/x2 - x3 * math.sqrt(3)
+# b1 = 1/x2 + x3 * math.sqrt(3)
+# sigma2 =  1 / x4 * math.sqrt(2 / math.pi)
+# a2 = 1/x5 - x6 * math.sqrt(3)
+# b2 = 1/x5 + x6 * math.sqrt(3)
 
-m1 = 1/x1
-m2 = (a1 + b1) / 2
-m3 = 1 / x4
-m4 = (a2 + b2) / 2
+# m1 = 1/x1
+# m2 = (a1 + b1) / 2
+# m3 = 1 / x4
+# m4 = (a2 + b2) / 2
 
-print(sigma1, a1, b1, sigma2, a2, b2)
-print(m1, m2, m3, m4)
+# print(sigma1, a1, b1, sigma2, a2, b2)
+# print(m1, m2, m3, m4)
 
-m = Model(start_time = 0, end_time = 100, generators_conf_array = [[sigma1, a1, b1], [sigma2, a2, b2]], number_of_multioperators=1)
-avg = m.calculate(1, 1)
-print(avg)
+# m = Model(start_time = 0, end_time = 100, generators_conf_array = [[sigma1, a1, b1], [sigma2, a2, b2]], number_of_multioperators=1)
+# avg = m.calculate(1)
+# print(avg)
