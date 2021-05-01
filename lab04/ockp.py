@@ -23,13 +23,21 @@ class OCKP:
 		self.na = 2*self.number_of_factors
 		self.nc = 1
 		self.number_of_experiments = self.n + self.na + self.nc
-		self.doubles_count = (self.number_of_experiments * self.number_of_experiments - 1)/2
+		self.doubles_count = int((self.number_of_factors) * (self.number_of_factors - 1)/2)
 		self.S = math.sqrt(self.n / self.number_of_experiments)
 		self.alpha = math.sqrt(self.n / 2 * (math.sqrt(self.number_of_experiments / self.n) - 1))
 		self.plantable = []
 		self.realtable = []
 		self.exp_data_filled = False
 		self.cal_data_filled = False
+		self.koef_count = 2 * self.number_of_factors + self.doubles_count + 1
+
+		print("ОЦКП для ", str(self.number_of_factors), " факторов")
+		print("Количество экспериментов ", self.number_of_experiments)
+		print("Количество коэффициентов в уравнении регрессии второй степени ", self.koef_count)
+		print("S = ", self.S)
+		print("alpha = ", self.alpha)
+		print("--------------------------------")
 
 		self.form_plantable()
 		# self.show_plantable()
@@ -270,8 +278,6 @@ class OCKP:
 		self.Sad = self.number_of_factors / (self.number_of_experiments - self.meaningful_koefs) * sumsquarediffs
 		self.F = self.Sad / self.Sv
 
-		print(self.Sad, self.Sv, self.F)
-
 
 	def print_equation(self):
 		comb = []
@@ -289,6 +295,71 @@ class OCKP:
 			if (self.koefs[i] != 0):
 				print(" +", str(round(self.koefs[i], 4)) + comb[i], end="")
 		print()
+
+	def calculate(self, factors):
+		assert(len(factors) == self.number_of_factors)
+		res = self.koefs[0]
+		for i in range(self.number_of_factors):
+			res += self.koefs[i + 1] * get_value(factors[i], self.min_max_params[i])
+		for i in range(self.number_of_factors - 1):
+			for j in range(i+1, self.number_of_factors):
+				res += self.koefs[self.number_of_factors + i + j] *  get_value(factors[i], self.min_max_params[i]) * get_value(factors[j], self.min_max_params[j])
+		offset = int (self.number_of_factors + (self.number_of_factors - 1)*self.number_of_factors / 2)
+		for i in range(self.number_of_factors):
+			res += self.koefs[offset + i] * get_value(factors[i], self.min_max_params[i])**2
+		return res
+
+def getdotbyprop(ockp):
+	x1_min = ockp.min_max_params[0][0]
+	x1_max = ockp.min_max_params[0][1]
+	x2_min = ockp.min_max_params[1][0]
+	x2_max = ockp.min_max_params[1][1]
+	x3_min = ockp.min_max_params[2][0]
+	x3_max = ockp.min_max_params[2][1]
+	x4_min = ockp.min_max_params[3][0]
+	x4_max = ockp.min_max_params[3][1]
+	x5_min = ockp.min_max_params[4][0]
+	x5_max = ockp.min_max_params[4][1]
+	x6_min = ockp.min_max_params[5][0]
+	x6_max = ockp.min_max_params[5][1]
+
+	x1_prop = float(input("Введите кодированное значение интенсивности генератора 1: "))
+	x2_prop = float(input("Введите кодированное значение интенсивность обработки заявки 1 типа: "))
+	x3_prop = float(input("Введите кодированное значение среднеквадратического отклонение обработки заявки 1 типа : "))
+	x4_prop = float(input("Введите кодированное значение интенсивности генератора 2: "))
+	x5_prop = float(input("Введите кодированное значение интенсивность обработки заявки 2 типа: "))
+	x6_prop = float(input("Введите кодированное значение среднеквадратического отклонение обработки заявки 2 типа : "))
+
+	assert(-1 <= x1_prop <= 1)
+	assert(-1 <= x2_prop <= 1)
+	assert(-1 <= x3_prop <= 1)
+	assert(-1 <= x4_prop <= 1)
+	assert(-1 <= x5_prop <= 1)
+	assert(-1 <= x6_prop <= 1)
+
+	x1 = get_value(x1_prop, [x1_min, x1_max])
+	x2 = get_value(x2_prop, [x2_min, x2_max])
+	x3 = get_value(x3_prop, [x3_min, x3_max])
+	x4 = get_value(x4_prop, [x4_min, x4_max])
+	x5 = get_value(x5_prop, [x5_min, x5_max])
+	x6 = get_value(x6_prop, [x6_min, x6_max])
+
+	sigma1 =  1 / x1 * math.sqrt(2 / math.pi)
+	a1 = 1/x2 - x3 * math.sqrt(3)
+	b1 = 1/x2 + x3 * math.sqrt(3)
+	sigma2 =  1 / x4 * math.sqrt(2 / math.pi)
+	a2 = 1/x5 - x6 * math.sqrt(3)
+	b2 = 1/x5 + x6 * math.sqrt(3)
+
+	model = Model(0, 100, [[sigma1, a1, b1], [sigma2, a2, b2]], 1)
+	y_avg = model.calculate(5)
+	y_cal = ockp.calculate([x1_prop, x2_prop, x3_prop, x4_prop, x5_prop, x6_prop])
+
+	print("-------------------------------------------------------------------")
+	print("Значение y полученное экспериментально:\t\t", y_avg)
+	print()
+	print("Расчитанное значение y по ОЦКП:\t\t", y_cal)
+	print("Разница:\t\t\t\t", y_avg - y_cal)
 
 
 x1_min = 0.1
@@ -312,3 +383,11 @@ x6_max = 0.15
 times = 5
 min_max_factors = [[x1_min, x1_max], [x2_min, x2_max], [x3_min, x3_max], [x4_min, x4_max], [x5_min, x5_max], [x6_min, x6_max]]
 ockp = OCKP(min_max_factors, times)
+
+getdotflag = True
+while (getdotflag):
+	flag = input('Рассчитать значение для точки из факторного пространства (ДA/нет)?')
+	if (flag == '' or flag.lower() == 'да'):
+		getdotbyprop(ockp)
+	elif (flag.lower() == 'нет'):
+		getdotflag = False

@@ -318,7 +318,7 @@ class Model:
 				print("avg", time, ": ", self.avg_waiting_time)
 			time += 1
 			if (self.avg_waiting_time == -1):
-				# avg.append(-1)
+				# avg.append(-1) infinity
 				avg.append(0)
 			else:
 				avg.append(self.avg_waiting_time)
